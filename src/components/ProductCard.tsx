@@ -53,7 +53,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <button
             onClick={() => addItem(product)}
             disabled={!product.inStock}
-            className="bg-secondary text-white px-4 py-2 rounded text-sm font-medium hover:bg-secondary-dark transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="btn-small disabled:bg-gray-300 disabled:cursor-not-allowed"
           >
             Add to Cart
           </button>

@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdfcfa;
+  --background: #ffffff;
   --foreground: #1a1a1a;
-  --primary: #8B4513;
-  --primary-dark: #6B3410;
-  --secondary: #2d5016;
-  --secondary-dark: #1e3a0f;
-  --accent: #d4a574;
-  --muted: #6b6b6b;
-  --border: #e5e5e5;
+  --primary: #1a1a1a;
+  --primary-dark: #000000;
+  --secondary: #1e5631;
+  --secondary-dark: #143d22;
+  --accent: #2e7d32;
+  --muted: #6b7280;
+  --border: #e5e7eb;
   --card: #ffffff;
 }
 
@@ -38,16 +38,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Consistent Button System - 44px min height for touch targets */
 .btn-primary {
-  @apply bg-secondary text-white px-6 py-3 rounded font-semibold transition-all duration-200 hover:bg-secondary-dark;
+  @apply inline-flex items-center justify-center bg-secondary text-white px-8 py-3 rounded font-semibold transition-all duration-200 hover:bg-secondary-dark min-h-[48px] min-w-[140px] text-center;
 }
 
 .btn-secondary {
-  @apply bg-primary text-white px-6 py-3 rounded font-semibold transition-all duration-200 hover:bg-primary-dark;
+  @apply inline-flex items-center justify-center bg-primary text-white px-8 py-3 rounded font-semibold transition-all duration-200 hover:bg-primary-dark min-h-[48px] min-w-[140px] text-center;
 }
 
 .btn-outline {
-  @apply border-2 border-secondary text-secondary px-6 py-3 rounded font-semibold transition-all duration-200 hover:bg-secondary hover:text-white;
+  @apply inline-flex items-center justify-center border-2 border-secondary text-secondary px-8 py-3 rounded font-semibold transition-all duration-200 hover:bg-secondary hover:text-white min-h-[48px] min-w-[140px] text-center;
+}
+
+.btn-outline-white {
+  @apply inline-flex items-center justify-center border-2 border-white text-white px-8 py-3 rounded font-semibold transition-all duration-200 hover:bg-white hover:text-foreground min-h-[48px] min-w-[140px] text-center;
+}
+
+.btn-small {
+  @apply inline-flex items-center justify-center bg-secondary text-white px-4 py-2 rounded text-sm font-semibold transition-all duration-200 hover:bg-secondary-dark min-h-[40px] min-w-[100px] text-center;
 }
 
 .section-padding {
@@ -56,4 +65,12 @@ html {
 
 .container-custom {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Ensure consistent link button styling */
+a.btn-primary,
+a.btn-secondary,
+a.btn-outline,
+a.btn-outline-white {
+  text-decoration: none;
 }

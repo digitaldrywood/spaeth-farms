@@ -36,7 +36,7 @@ export default function Home() {
               <Link href="/products" className="btn-primary text-center">
                 Shop Our Beef
               </Link>
-              <Link href="/about" className="btn-outline border-white text-white hover:bg-white hover:text-foreground text-center">
+              <Link href="/about" className="btn-outline-white">
                 Our Story
               </Link>
             </div>
@@ -349,7 +349,7 @@ export default function Home() {
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Join thousands of families who have discovered the exceptional quality of Spaeth Farms beef. Free shipping on orders over $199.
           </p>
-          <Link href="/products" className="inline-block bg-white text-secondary px-8 py-4 rounded font-semibold text-lg hover:bg-gray-100 transition-colors">
+          <Link href="/products" className="inline-flex items-center justify-center bg-white text-secondary px-8 py-3 rounded font-semibold transition-all duration-200 hover:bg-gray-100 min-h-[48px] min-w-[140px] text-center">
             Shop Now
           </Link>
         </div>
