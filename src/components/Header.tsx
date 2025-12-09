@@ -26,15 +26,15 @@ export default function Header() {
       </div>
 
       <nav className="container-custom">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/spaeth-farms/images/logo.png"
               alt="Spaeth Farms"
-              width={220}
-              height={110}
-              className="h-16 w-auto"
+              width={280}
+              height={140}
+              className="h-20 w-auto"
               priority
             />
           </Link>
