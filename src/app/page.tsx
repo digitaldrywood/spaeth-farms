@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ProductCard from '@/components/ProductCard';
+import HeroCarousel from '@/components/HeroCarousel';
 import { getFeaturedProducts, categories } from '@/data/products';
 
 export default function Home() {
@@ -12,14 +13,7 @@ export default function Home() {
       <section className="relative bg-foreground text-white min-h-[600px] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10" />
         <div className="absolute inset-0">
-          <Image
-            src="/spaeth-farms/images/hero-cattle.jpg"
-            alt="Cattle grazing on rolling Wisconsin hills"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
+          <HeroCarousel />
         </div>
         <div className="container-custom relative z-20 py-20">
           <div className="max-w-2xl">
