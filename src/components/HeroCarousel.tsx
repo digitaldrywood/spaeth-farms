@@ -9,10 +9,6 @@ const heroImages = [
     alt: 'Cattle grazing on rolling Wisconsin hills',
   },
   {
-    src: '/spaeth-farms/images/spaeth-cattle.jpg',
-    alt: 'Spaeth Farms beef cattle in pasture',
-  },
-  {
     src: '/spaeth-farms/images/hereford-herd.jpg',
     alt: 'Hereford cattle herd grazing',
   },
