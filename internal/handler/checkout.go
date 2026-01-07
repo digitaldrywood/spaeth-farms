@@ -43,6 +43,31 @@ func (h *Handler) CheckoutCreateSession(c echo.Context) error {
 		})
 	}
 
+	// SECURITY: Validate prices server-side by looking up each product
+	// Never trust client-supplied prices
+	var subtotal int64
+	for i, item := range req.Items {
+		product, err := h.db.Queries.GetProductBySlug(ctx, item.Slug)
+		if err != nil {
+			slog.Error("product not found during checkout", "slug", item.Slug, "error", err)
+			return c.JSON(http.StatusBadRequest, map[string]string{
+				"error": fmt.Sprintf("Product not found: %s", item.Slug),
+			})
+		}
+
+		// Use server-side price, not client-supplied price
+		req.Items[i].Price = product.PriceCents
+		req.Items[i].Name = product.Name
+		if product.Weight.Valid {
+			req.Items[i].Weight = product.Weight.String
+		}
+		if product.Image.Valid {
+			req.Items[i].Image = product.Image.String
+		}
+
+		subtotal += product.PriceCents * int64(item.Qty)
+	}
+
 	baseURL := h.cfg.Site.URL
 	successURL := baseURL + "/checkout/success"
 	cancelURL := baseURL + "/checkout/cancel"
@@ -55,12 +80,8 @@ func (h *Handler) CheckoutCreateSession(c echo.Context) error {
 		})
 	}
 
-	// Store order in database
+	// Store order in database with validated prices
 	itemsJSON, _ := json.Marshal(req.Items)
-	var subtotal int64
-	for _, item := range req.Items {
-		subtotal += item.Price * int64(item.Qty)
-	}
 
 	// Calculate shipping (free over $199)
 	var shippingCents int64
