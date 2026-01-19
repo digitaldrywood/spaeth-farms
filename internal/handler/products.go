@@ -1,9 +1,10 @@
 package handler
 
 import (
-	"database/sql"
 	"log/slog"
 	"net/http"
+
+	"github.com/jackc/pgx/v5/pgtype"
 
 	"spaeth-farms/templates/pages"
 
@@ -20,7 +21,7 @@ func (h *Handler) Products(c echo.Context) error {
 	var err error
 
 	if categoryID != "" {
-		products, err = h.db.Queries.ListProductsByCategory(ctx, sql.NullString{String: categoryID, Valid: true})
+		products, err = h.db.Queries.ListProductsByCategory(ctx, pgtype.Text{String: categoryID, Valid: true})
 	} else {
 		products, err = h.db.Queries.ListProducts(ctx)
 	}

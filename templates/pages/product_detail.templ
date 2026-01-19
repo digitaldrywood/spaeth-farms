@@ -1,9 +1,11 @@
 package pages
 
 import (
-	"database/sql"
 	"fmt"
 	"strings"
+
+	"github.com/jackc/pgx/v5/pgtype"
+
 	"spaeth-farms/internal/database/sqlc"
 	"spaeth-farms/internal/meta"
 	"spaeth-farms/templates/components"
@@ -11,7 +13,7 @@ import (
 )
 
 templ ProductDetail(product sqlc.Product, relatedProducts interface{}) {
-	@layouts.Base(meta.ForProduct(product.Name, nullStr(product.Description), product.PriceCents, nullStr(product.Image))) {
+	@layouts.Base(meta.ForProduct(product.Name, pgStr(product.Description), product.PriceCents, pgStr(product.Image))) {
 		<section class="py-12">
 			<div class="max-w-7xl mx-auto px-4">
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -32,7 +34,7 @@ templ ProductDetail(product sqlc.Product, relatedProducts interface{}) {
 						if product.Weight.Valid {
 							<p class="text-stone-500 mb-4">{ product.Weight.String }</p>
 						}
-						<p class="text-3xl font-bold text-green-700 mb-6">{ formatPrice(product.PriceCents) }</p>
+						<p class="text-3xl font-bold text-green-700 mb-6">{ detailFormatPrice(product.PriceCents) }</p>
 						if product.Description.Valid {
 							<p class="text-stone-600 mb-6 leading-relaxed">{ product.Description.String }</p>
 						}
@@ -61,7 +63,7 @@ templ ProductDetail(product sqlc.Product, relatedProducts interface{}) {
 								</div>
 							</div>
 							<button
-								@click={ fmt.Sprintf("addToCart({slug: '%s', name: '%s', price: %d, image: '%s', weight: '%s'}, qty)", escJS(product.Slug), escJS(product.Name), product.PriceCents, escJS(nullStr(product.Image)), escJS(nullStr(product.Weight))) }
+								@click={ fmt.Sprintf("addToCart({slug: '%s', name: '%s', price: %d, image: '%s', weight: '%s'}, qty)", detailEscJS(product.Slug), detailEscJS(product.Name), product.PriceCents, detailEscJS(pgStr(product.Image)), detailEscJS(pgStr(product.Weight))) }
 								class="w-full bg-green-700 text-white py-4 rounded-lg font-semibold hover:bg-green-800"
 							>
 								Add to Cart
@@ -203,17 +205,17 @@ templ ProductDetail(product sqlc.Product, relatedProducts interface{}) {
 	}
 }
 
-func nullStr(s sql.NullString) string {
+func pgStr(s pgtype.Text) string {
 	if s.Valid {
 		return s.String
 	}
 	return ""
 }
 
-func formatPrice(cents int64) string {
+func detailFormatPrice(cents int32) string {
 	return fmt.Sprintf("$%.2f", float64(cents)/100)
 }
 
-func escJS(s string) string {
+func detailEscJS(s string) string {
 	return strings.ReplaceAll(s, "'", "\\'")
 }

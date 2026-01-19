@@ -1,8 +1,10 @@
 package admin
 
 import (
-	"database/sql"
 	"fmt"
+
+	"github.com/jackc/pgx/v5/pgtype"
+
 	"spaeth-farms/internal/database/sqlc"
 	"spaeth-farms/internal/meta"
 	"spaeth-farms/templates/layouts"
@@ -51,7 +53,7 @@ templ Orders(orders []sqlc.Order) {
 									</td>
 									<td class="px-6 py-4 whitespace-nowrap">
 										<span class={ "px-2 py-1 text-xs rounded-full", orderStatusColor(order.Status) }>
-											{ ordersNullStringOr(order.Status, "pending") }
+											{ ordersPgTextOr(order.Status, "pending") }
 										</span>
 									</td>
 								</tr>
@@ -64,7 +66,7 @@ templ Orders(orders []sqlc.Order) {
 	}
 }
 
-func orderStatusColor(status sql.NullString) string {
+func orderStatusColor(status pgtype.Text) string {
 	if !status.Valid {
 		return "bg-stone-100 text-stone-600"
 	}
@@ -82,14 +84,14 @@ func orderStatusColor(status sql.NullString) string {
 	}
 }
 
-func ordersNullStringOr(s sql.NullString, def string) string {
+func ordersPgTextOr(s pgtype.Text, def string) string {
 	if s.Valid {
 		return s.String
 	}
 	return def
 }
 
-func ordersFormatTime(t sql.NullTime) string {
+func ordersFormatTime(t pgtype.Timestamptz) string {
 	if t.Valid {
 		return t.Time.Format("Jan 2, 2006")
 	}

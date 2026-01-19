@@ -1,8 +1,10 @@
 package admin
 
 import (
-	"database/sql"
 	"fmt"
+
+	"github.com/jackc/pgx/v5/pgtype"
+
 	"spaeth-farms/internal/database/sqlc"
 	"spaeth-farms/internal/meta"
 	"spaeth-farms/templates/layouts"
@@ -33,7 +35,7 @@ templ HomePage(heroSlides []sqlc.HeroSlide, featuredProducts []sqlc.Product) {
 								<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
 									<span class="text-white text-sm">Order: { fmt.Sprintf("%d", homeGetSortOrder(slide.SortOrder)) }</span>
 								</div>
-								if slide.Active.Valid && slide.Active.Int64 == 0 {
+								if slide.Active.Valid && !slide.Active.Bool {
 									<span class="absolute top-2 right-2 px-2 py-1 bg-red-500 text-white text-xs rounded">Inactive</span>
 								}
 							</div>
@@ -80,16 +82,16 @@ templ HomePage(heroSlides []sqlc.HeroSlide, featuredProducts []sqlc.Product) {
 	}
 }
 
-func homeGetAltText(alt sql.NullString) string {
+func homeGetAltText(alt pgtype.Text) string {
 	if alt.Valid {
 		return alt.String
 	}
 	return "Hero slide"
 }
 
-func homeGetSortOrder(order sql.NullInt64) int64 {
+func homeGetSortOrder(order pgtype.Int4) int32 {
 	if order.Valid {
-		return order.Int64
+		return order.Int32
 	}
 	return 0
 }

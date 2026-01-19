@@ -81,7 +81,7 @@ templ Products(productsData interface{}, categories []sqlc.Category, activeCateg
 							switch products := productsData.(type) {
 							case []sqlc.Product:
 								for _, product := range products {
-									@ProductCard(product)
+									@ProductsCard(product)
 								}
 							}
 						</div>
@@ -92,7 +92,7 @@ templ Products(productsData interface{}, categories []sqlc.Category, activeCateg
 	}
 }
 
-templ ProductCard(product sqlc.Product) {
+templ ProductsCard(product sqlc.Product) {
 	<div class="bg-white rounded-lg border border-stone-200 overflow-hidden group">
 		<a href={ templ.SafeURL(fmt.Sprintf("/products/%s", product.Slug)) } class="block relative">
 			<div class="aspect-square overflow-hidden bg-stone-100">
@@ -110,7 +110,7 @@ templ ProductCard(product sqlc.Product) {
 					</div>
 				}
 			</div>
-			if product.Featured.Valid && product.Featured.Int64 == 1 {
+			if product.Featured.Valid && product.Featured.Bool {
 				<span class="absolute top-3 left-3 bg-green-700 text-white text-xs font-semibold px-2.5 py-1 rounded">
 					Featured
 				</span>

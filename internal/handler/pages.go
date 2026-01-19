@@ -1,9 +1,10 @@
 package handler
 
 import (
-	"database/sql"
 	"log/slog"
 	"net/http"
+
+	"github.com/jackc/pgx/v5/pgtype"
 
 	"spaeth-farms/internal/database/sqlc"
 	"spaeth-farms/templates/pages"
@@ -146,9 +147,9 @@ func (h *Handler) SignIn(c echo.Context) error {
 	return pages.SignIn(h.cfg.ClerkPublishableKey, redirect).Render(ctx, c.Response().Writer)
 }
 
-func pagesNullStr(s string) sql.NullString {
+func pagesNullStr(s string) pgtype.Text {
 	if s == "" {
-		return sql.NullString{Valid: false}
+		return pgtype.Text{Valid: false}
 	}
-	return sql.NullString{String: s, Valid: true}
+	return pgtype.Text{String: s, Valid: true}
 }

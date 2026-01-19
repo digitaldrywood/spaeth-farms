@@ -131,7 +131,7 @@ templ ProductEdit(product *sqlc.Product, categories []sqlc.Category) {
 						<input
 							type="checkbox"
 							name="featured"
-							if product != nil && product.Featured.Valid && product.Featured.Int64 == 1 {
+							if product != nil && product.Featured.Valid && product.Featured.Bool {
 								checked
 							}
 							class="rounded border-stone-300 text-green-600 focus:ring-green-500"
@@ -142,7 +142,7 @@ templ ProductEdit(product *sqlc.Product, categories []sqlc.Category) {
 						<input
 							type="checkbox"
 							name="in_stock"
-							if product == nil || (product.InStock.Valid && product.InStock.Int64 == 1) {
+							if product == nil || (product.InStock.Valid && product.InStock.Bool) {
 								checked
 							}
 							class="rounded border-stone-300 text-green-600 focus:ring-green-500"

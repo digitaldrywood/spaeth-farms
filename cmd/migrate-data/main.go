@@ -2,12 +2,13 @@ package main
 
 import (
 	"context"
-	"database/sql"
 	"encoding/json"
 	"fmt"
 	"log/slog"
 	"os"
 	"strings"
+
+	"github.com/jackc/pgx/v5/pgtype"
 
 	"spaeth-farms/internal/database"
 	"spaeth-farms/internal/database/sqlc"
@@ -45,7 +46,8 @@ func main() {
 
 	dbURL := os.Getenv("DATABASE_URL")
 	if dbURL == "" {
-		dbURL = "./data/spaeth-farms.db"
+		slog.Error("DATABASE_URL environment variable is required")
+		os.Exit(1)
 	}
 
 	slog.Info("connecting to database", "url", dbURL)
@@ -75,11 +77,11 @@ func main() {
 		_, err := db.Queries.CreateCategory(ctx, sqlc.CreateCategoryParams{
 			ID:          cat.ID,
 			Name:        cat.Name,
-			Description: sql.NullString{String: cat.Description, Valid: cat.Description != ""},
-			SortOrder:   sql.NullInt64{Int64: int64(i), Valid: true},
+			Description: toPgText(cat.Description),
+			SortOrder:   pgtype.Int4{Int32: int32(i), Valid: true},
 		})
 		if err != nil {
-			if strings.Contains(err.Error(), "UNIQUE constraint") {
+			if strings.Contains(err.Error(), "duplicate key") {
 				slog.Info("category already exists, skipping", "id", cat.ID)
 				continue
 			}
@@ -93,17 +95,7 @@ func main() {
 	slog.Info("migrating products", "count", len(productsFile.Products))
 	for _, prod := range productsFile.Products {
 		// Convert price to cents
-		priceCents := int64(prod.Price * 100)
-
-		// Convert bool to int
-		var featured int64
-		if prod.Featured {
-			featured = 1
-		}
-		var inStock int64
-		if prod.InStock {
-			inStock = 1
-		}
+		priceCents := int32(prod.Price * 100)
 
 		// Use long description if available
 		description := prod.Description
@@ -120,16 +112,16 @@ func main() {
 		_, err := db.Queries.CreateProduct(ctx, sqlc.CreateProductParams{
 			Slug:        prod.Slug,
 			Name:        prod.Name,
-			CategoryID:  sql.NullString{String: prod.Category, Valid: prod.Category != ""},
+			CategoryID:  toPgText(prod.Category),
 			PriceCents:  priceCents,
-			Weight:      sql.NullString{String: prod.Weight, Valid: prod.Weight != ""},
-			Description: sql.NullString{String: description, Valid: description != ""},
-			Image:       sql.NullString{String: image, Valid: image != ""},
-			Featured:    sql.NullInt64{Int64: featured, Valid: true},
-			InStock:     sql.NullInt64{Int64: inStock, Valid: true},
+			Weight:      toPgText(prod.Weight),
+			Description: toPgText(description),
+			Image:       toPgText(image),
+			Featured:    pgtype.Bool{Bool: prod.Featured, Valid: true},
+			InStock:     pgtype.Bool{Bool: prod.InStock, Valid: true},
 		})
 		if err != nil {
-			if strings.Contains(err.Error(), "UNIQUE constraint") {
+			if strings.Contains(err.Error(), "duplicate key") {
 				slog.Info("product already exists, skipping", "slug", prod.Slug)
 				continue
 			}
@@ -153,9 +145,9 @@ func main() {
 	for i, slide := range heroImages {
 		_, err := db.Queries.CreateHeroSlide(ctx, sqlc.CreateHeroSlideParams{
 			Image:     slide.Image,
-			AltText:   sql.NullString{String: slide.AltText, Valid: true},
-			SortOrder: sql.NullInt64{Int64: int64(i), Valid: true},
-			Active:    sql.NullInt64{Int64: 1, Valid: true},
+			AltText:   toPgText(slide.AltText),
+			SortOrder: pgtype.Int4{Int32: int32(i), Valid: true},
+			Active:    pgtype.Bool{Bool: true, Valid: true},
 		})
 		if err != nil {
 			slog.Warn("failed to create hero slide", "image", slide.Image, "error", err)
@@ -167,22 +159,22 @@ func main() {
 	// Add default site settings
 	slog.Info("adding site settings")
 	settings := map[string]string{
-		"phone":                "715-313-0075",
-		"email":                "info@spaethfarms.com",
-		"address":              "Loyal, Wisconsin",
-		"free_shipping_min":    "199",
-		"tagline":              "Premium Farm-Raised Beef Delivered Nationwide",
-		"about_short":          "Family-owned Spaeth Farms has been raising premium Hereford cattle in Wisconsin for generations.",
-		"facebook_url":         "",
-		"instagram_url":        "",
-		"shipping_info":        "Orders ship Monday-Wednesday via FedEx. Free shipping on orders over $199.",
-		"return_policy":        "We stand behind our products. If you're not satisfied, contact us within 7 days of delivery.",
+		"phone":             "715-313-0075",
+		"email":             "info@spaethfarms.com",
+		"address":           "Loyal, Wisconsin",
+		"free_shipping_min": "199",
+		"tagline":           "Premium Farm-Raised Beef Delivered Nationwide",
+		"about_short":       "Family-owned Spaeth Farms has been raising premium Hereford cattle in Wisconsin for generations.",
+		"facebook_url":      "",
+		"instagram_url":     "",
+		"shipping_info":     "Orders ship Monday-Wednesday via FedEx. Free shipping on orders over $199.",
+		"return_policy":     "We stand behind our products. If you're not satisfied, contact us within 7 days of delivery.",
 	}
 
 	for key, value := range settings {
 		err := db.Queries.UpsertSetting(ctx, sqlc.UpsertSettingParams{
 			Key:   key,
-			Value: sql.NullString{String: value, Valid: true},
+			Value: toPgText(value),
 		})
 		if err != nil {
 			slog.Warn("failed to upsert setting", "key", key, "error", err)
@@ -197,39 +189,39 @@ func main() {
 		Author   string
 		Location string
 		Content  string
-		Rating   int64
-		Featured int64
+		Rating   int32
+		Featured bool
 	}{
 		{
 			Author:   "Michael R.",
 			Location: "Chicago, IL",
 			Content:  "The ribeyes from Spaeth Farms are hands-down the best steaks I've ever cooked at home. The marbling is incredible and the flavor is unmatched.",
 			Rating:   5,
-			Featured: 1,
+			Featured: true,
 		},
 		{
 			Author:   "Sarah & Tom K.",
 			Location: "Minneapolis, MN",
 			Content:  "We ordered the Family Essentials Bundle and it fed our family of five for over a month. Great variety and amazing quality at a fair price.",
 			Rating:   5,
-			Featured: 1,
+			Featured: true,
 		},
 		{
 			Author:   "David L.",
 			Location: "Denver, CO",
 			Content:  "Shipping was fast and everything arrived frozen solid. You can really taste the difference when beef is raised right. We're customers for life!",
 			Rating:   5,
-			Featured: 1,
+			Featured: true,
 		},
 	}
 
 	for _, t := range testimonials {
 		_, err := db.Queries.CreateTestimonial(ctx, sqlc.CreateTestimonialParams{
 			Author:   t.Author,
-			Location: sql.NullString{String: t.Location, Valid: true},
+			Location: toPgText(t.Location),
 			Content:  t.Content,
-			Rating:   sql.NullInt64{Int64: t.Rating, Valid: true},
-			Featured: sql.NullInt64{Int64: t.Featured, Valid: true},
+			Rating:   pgtype.Int4{Int32: t.Rating, Valid: true},
+			Featured: pgtype.Bool{Bool: t.Featured, Valid: true},
 		})
 		if err != nil {
 			slog.Warn("failed to create testimonial", "author", t.Author, "error", err)
@@ -240,4 +232,11 @@ func main() {
 
 	fmt.Println("\nData migration complete!")
 	fmt.Println("Run 'make migrate' first if you haven't already.")
+}
+
+func toPgText(s string) pgtype.Text {
+	if s == "" {
+		return pgtype.Text{Valid: false}
+	}
+	return pgtype.Text{String: s, Valid: true}
 }

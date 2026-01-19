@@ -26,7 +26,7 @@ type Config struct {
 
 func Load() *Config {
 	cfg := &Config{
-		DatabaseURL: getEnvOrDefault("DATABASE_URL", "./data/spaeth-farms.db"),
+		DatabaseURL: os.Getenv("DATABASE_URL"),
 		Port:        getEnvOrDefault("PORT", "8014"),
 		Env:         getEnvOrDefault("ENV", "development"),
 		Site: SiteConfig{

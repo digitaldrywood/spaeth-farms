@@ -1,9 +1,11 @@
 package components
 
 import (
-	"database/sql"
 	"fmt"
 	"strings"
+
+	"github.com/jackc/pgx/v5/pgtype"
+
 	"spaeth-farms/internal/database/sqlc"
 )
 
@@ -32,7 +34,7 @@ templ ProductCard(product sqlc.Product) {
 			<div class="flex items-center justify-between mt-3">
 				<span class="text-lg font-bold text-green-700">{ formatPrice(product.PriceCents) }</span>
 				<button
-					@click={ fmt.Sprintf("addToCart({slug: '%s', name: '%s', price: %d, image: '%s', weight: '%s'})", escapeJS(product.Slug), escapeJS(product.Name), product.PriceCents, escapeJS(nullString(product.Image)), escapeJS(nullString(product.Weight))) }
+					@click={ fmt.Sprintf("addToCart({slug: '%s', name: '%s', price: %d, image: '%s', weight: '%s'})", escapeJS(product.Slug), escapeJS(product.Name), product.PriceCents, escapeJS(pgText(product.Image)), escapeJS(pgText(product.Weight))) }
 					class="bg-green-700 text-white px-4 py-2 rounded text-sm font-medium hover:bg-green-800"
 				>
 					Add to Cart
@@ -42,11 +44,11 @@ templ ProductCard(product sqlc.Product) {
 	</div>
 }
 
-func formatPrice(cents int64) string {
+func formatPrice(cents int32) string {
 	return fmt.Sprintf("$%.2f", float64(cents)/100)
 }
 
-func nullString(s sql.NullString) string {
+func pgText(s pgtype.Text) string {
 	if s.Valid {
 		return s.String
 	}
