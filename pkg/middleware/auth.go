@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	"spaeth-farms/internal/services"
+	"spaeth-farms/pkg/services"
 
 	"github.com/labstack/echo/v4"
 )

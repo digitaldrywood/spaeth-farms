@@ -6,7 +6,7 @@ import (
 
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"spaeth-farms/internal/database/sqlc"
+	"spaeth-farms/pkg/database/sqlc"
 )
 
 type DB struct {

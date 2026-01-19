@@ -13,8 +13,8 @@ import (
 
 	"github.com/jackc/pgx/v5/pgtype"
 
-	"spaeth-farms/internal/database/sqlc"
-	"spaeth-farms/internal/meta"
+	"spaeth-farms/pkg/database/sqlc"
+	"spaeth-farms/pkg/meta"
 	"spaeth-farms/templates/layouts"
 )
 
@@ -58,7 +58,7 @@ func Dashboard(productCount int64, orderCount int64, unreadContacts int64, recen
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", productCount))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/dashboard.templ`, Line: 29, Col: 85}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/dashboard.templ`, Line: 29, Col: 85}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -71,7 +71,7 @@ func Dashboard(productCount int64, orderCount int64, unreadContacts int64, recen
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", orderCount))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/dashboard.templ`, Line: 44, Col: 83}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/dashboard.templ`, Line: 44, Col: 83}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -84,7 +84,7 @@ func Dashboard(productCount int64, orderCount int64, unreadContacts int64, recen
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", unreadContacts))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/dashboard.templ`, Line: 59, Col: 87}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/dashboard.templ`, Line: 59, Col: 87}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -109,7 +109,7 @@ func Dashboard(productCount int64, orderCount int64, unreadContacts int64, recen
 						var templ_7745c5c3_Var6 string
 						templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(order.CustomerName.String)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/dashboard.templ`, Line: 81, Col: 38}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/dashboard.templ`, Line: 81, Col: 38}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 						if templ_7745c5c3_Err != nil {
@@ -119,7 +119,7 @@ func Dashboard(productCount int64, orderCount int64, unreadContacts int64, recen
 						var templ_7745c5c3_Var7 string
 						templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(order.CustomerEmail)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/dashboard.templ`, Line: 83, Col: 32}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/dashboard.templ`, Line: 83, Col: 32}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 						if templ_7745c5c3_Err != nil {
@@ -133,7 +133,7 @@ func Dashboard(productCount int64, orderCount int64, unreadContacts int64, recen
 					var templ_7745c5c3_Var8 string
 					templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(formatTime(order.CreatedAt))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/dashboard.templ`, Line: 86, Col: 72}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/dashboard.templ`, Line: 86, Col: 72}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 					if templ_7745c5c3_Err != nil {
@@ -146,7 +146,7 @@ func Dashboard(productCount int64, orderCount int64, unreadContacts int64, recen
 					var templ_7745c5c3_Var9 string
 					templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("$%.2f", float64(order.TotalCents)/100))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/dashboard.templ`, Line: 89, Col: 100}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/dashboard.templ`, Line: 89, Col: 100}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 					if templ_7745c5c3_Err != nil {
@@ -168,7 +168,7 @@ func Dashboard(productCount int64, orderCount int64, unreadContacts int64, recen
 					var templ_7745c5c3_Var11 string
 					templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var10).String())
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/dashboard.templ`, Line: 1, Col: 0}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/dashboard.templ`, Line: 1, Col: 0}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 					if templ_7745c5c3_Err != nil {
@@ -181,7 +181,7 @@ func Dashboard(productCount int64, orderCount int64, unreadContacts int64, recen
 					var templ_7745c5c3_Var12 string
 					templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(pgTextOr(order.Status, "pending"))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/dashboard.templ`, Line: 91, Col: 45}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/dashboard.templ`, Line: 91, Col: 45}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 					if templ_7745c5c3_Err != nil {

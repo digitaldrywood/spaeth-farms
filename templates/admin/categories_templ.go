@@ -10,8 +10,8 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"fmt"
-	"spaeth-farms/internal/database/sqlc"
-	"spaeth-farms/internal/meta"
+	"spaeth-farms/pkg/database/sqlc"
+	"spaeth-farms/pkg/meta"
 	"spaeth-farms/templates/layouts"
 )
 
@@ -60,7 +60,7 @@ func Categories(categories []sqlc.Category) templ.Component {
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(cat.ID)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/categories.templ`, Line: 30, Col: 91}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/categories.templ`, Line: 30, Col: 91}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -73,7 +73,7 @@ func Categories(categories []sqlc.Category) templ.Component {
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/categories.templ`, Line: 31, Col: 81}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/categories.templ`, Line: 31, Col: 81}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -87,7 +87,7 @@ func Categories(categories []sqlc.Category) templ.Component {
 					var templ_7745c5c3_Var5 string
 					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Description.String)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/categories.templ`, Line: 34, Col: 34}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/categories.templ`, Line: 34, Col: 34}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 					if templ_7745c5c3_Err != nil {
@@ -102,7 +102,7 @@ func Categories(categories []sqlc.Category) templ.Component {
 					var templ_7745c5c3_Var6 string
 					templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", cat.SortOrder.Int32))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/categories.templ`, Line: 39, Col: 50}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/categories.templ`, Line: 39, Col: 50}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 					if templ_7745c5c3_Err != nil {

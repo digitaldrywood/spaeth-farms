@@ -10,8 +10,8 @@ import (
 
 	"github.com/jackc/pgx/v5/pgtype"
 
-	"spaeth-farms/internal/database"
-	"spaeth-farms/internal/database/sqlc"
+	"spaeth-farms/pkg/database"
+	"spaeth-farms/pkg/database/sqlc"
 )
 
 type ProductJSON struct {

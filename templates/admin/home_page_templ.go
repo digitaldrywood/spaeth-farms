@@ -13,8 +13,8 @@ import (
 
 	"github.com/jackc/pgx/v5/pgtype"
 
-	"spaeth-farms/internal/database/sqlc"
-	"spaeth-farms/internal/meta"
+	"spaeth-farms/pkg/database/sqlc"
+	"spaeth-farms/pkg/meta"
 	"spaeth-farms/templates/layouts"
 )
 
@@ -69,7 +69,7 @@ func HomePage(heroSlides []sqlc.HeroSlide, featuredProducts []sqlc.Product) temp
 					var templ_7745c5c3_Var3 string
 					templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/static%s", slide.Image))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/home_page.templ`, Line: 31, Col: 52}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/home_page.templ`, Line: 31, Col: 52}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 					if templ_7745c5c3_Err != nil {
@@ -82,7 +82,7 @@ func HomePage(heroSlides []sqlc.HeroSlide, featuredProducts []sqlc.Product) temp
 					var templ_7745c5c3_Var4 string
 					templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(homeGetAltText(slide.AltText))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/home_page.templ`, Line: 32, Col: 44}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/home_page.templ`, Line: 32, Col: 44}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 					if templ_7745c5c3_Err != nil {
@@ -95,7 +95,7 @@ func HomePage(heroSlides []sqlc.HeroSlide, featuredProducts []sqlc.Product) temp
 					var templ_7745c5c3_Var5 string
 					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", homeGetSortOrder(slide.SortOrder)))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/home_page.templ`, Line: 36, Col: 103}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/home_page.templ`, Line: 36, Col: 103}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 					if templ_7745c5c3_Err != nil {
@@ -140,7 +140,7 @@ func HomePage(heroSlides []sqlc.HeroSlide, featuredProducts []sqlc.Product) temp
 						var templ_7745c5c3_Var6 string
 						templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/static%s", product.Image.String))
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/home_page.templ`, Line: 64, Col: 66}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/home_page.templ`, Line: 64, Col: 66}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 						if templ_7745c5c3_Err != nil {
@@ -153,7 +153,7 @@ func HomePage(heroSlides []sqlc.HeroSlide, featuredProducts []sqlc.Product) temp
 						var templ_7745c5c3_Var7 string
 						templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/home_page.templ`, Line: 64, Col: 87}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/home_page.templ`, Line: 64, Col: 87}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 						if templ_7745c5c3_Err != nil {
@@ -176,7 +176,7 @@ func HomePage(heroSlides []sqlc.HeroSlide, featuredProducts []sqlc.Product) temp
 					var templ_7745c5c3_Var8 string
 					templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/home_page.templ`, Line: 69, Col: 61}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/home_page.templ`, Line: 69, Col: 61}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 					if templ_7745c5c3_Err != nil {
@@ -189,7 +189,7 @@ func HomePage(heroSlides []sqlc.HeroSlide, featuredProducts []sqlc.Product) temp
 					var templ_7745c5c3_Var9 string
 					templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("$%.2f", float64(product.PriceCents)/100))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/home_page.templ`, Line: 70, Col: 98}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/home_page.templ`, Line: 70, Col: 98}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 					if templ_7745c5c3_Err != nil {

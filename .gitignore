@@ -29,3 +29,4 @@ next-env.d.ts
 
 # Note: Generated files (*_templ.go, internal/database/sqlc/, static/css/output.css)
 # are now committed for Vercel deployment since Vercel Go runtime doesn't run go generate
+.vercel

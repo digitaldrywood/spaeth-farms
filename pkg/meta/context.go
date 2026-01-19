@@ -3,8 +3,8 @@ package meta
 import (
 	"context"
 
-	"spaeth-farms/internal/config"
-	"spaeth-farms/internal/ctxkeys"
+	"spaeth-farms/pkg/config"
+	"spaeth-farms/pkg/ctxkeys"
 )
 
 func SiteFromCtx(ctx context.Context) config.SiteConfig {

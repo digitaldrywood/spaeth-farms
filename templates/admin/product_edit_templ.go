@@ -10,8 +10,8 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"fmt"
-	"spaeth-farms/internal/database/sqlc"
-	"spaeth-farms/internal/meta"
+	"spaeth-farms/pkg/database/sqlc"
+	"spaeth-farms/pkg/meta"
 	"spaeth-farms/templates/layouts"
 )
 
@@ -75,7 +75,7 @@ func ProductEdit(product *sqlc.Product, categories []sqlc.Category) templ.Compon
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", product.ID))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/product_edit.templ`, Line: 26, Col: 73}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/product_edit.templ`, Line: 26, Col: 73}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -98,7 +98,7 @@ func ProductEdit(product *sqlc.Product, categories []sqlc.Category) templ.Compon
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/product_edit.templ`, Line: 37, Col: 27}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/product_edit.templ`, Line: 37, Col: 27}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -121,7 +121,7 @@ func ProductEdit(product *sqlc.Product, categories []sqlc.Category) templ.Compon
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(product.Slug)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/product_edit.templ`, Line: 51, Col: 27}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/product_edit.templ`, Line: 51, Col: 27}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -144,7 +144,7 @@ func ProductEdit(product *sqlc.Product, categories []sqlc.Category) templ.Compon
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(cat.ID)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/product_edit.templ`, Line: 63, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/product_edit.templ`, Line: 63, Col: 22}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -167,7 +167,7 @@ func ProductEdit(product *sqlc.Product, categories []sqlc.Category) templ.Compon
 				var templ_7745c5c3_Var7 string
 				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/product_edit.templ`, Line: 67, Col: 18}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/product_edit.templ`, Line: 67, Col: 18}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {
@@ -190,7 +190,7 @@ func ProductEdit(product *sqlc.Product, categories []sqlc.Category) templ.Compon
 				var templ_7745c5c3_Var8 string
 				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%.2f", float64(product.PriceCents)/100))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/product_edit.templ`, Line: 81, Col: 67}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/product_edit.templ`, Line: 81, Col: 67}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 				if templ_7745c5c3_Err != nil {
@@ -213,7 +213,7 @@ func ProductEdit(product *sqlc.Product, categories []sqlc.Category) templ.Compon
 				var templ_7745c5c3_Var9 string
 				templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(product.Weight.String)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/product_edit.templ`, Line: 95, Col: 36}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/product_edit.templ`, Line: 95, Col: 36}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 				if templ_7745c5c3_Err != nil {
@@ -232,7 +232,7 @@ func ProductEdit(product *sqlc.Product, categories []sqlc.Category) templ.Compon
 				var templ_7745c5c3_Var10 string
 				templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(product.Description.String)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/product_edit.templ`, Line: 110, Col: 35}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/product_edit.templ`, Line: 110, Col: 35}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 				if templ_7745c5c3_Err != nil {
@@ -251,7 +251,7 @@ func ProductEdit(product *sqlc.Product, categories []sqlc.Category) templ.Compon
 				var templ_7745c5c3_Var11 string
 				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(product.Image.String)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `admin/product_edit.templ`, Line: 123, Col: 35}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/admin/product_edit.templ`, Line: 123, Col: 35}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 				if templ_7745c5c3_Err != nil {

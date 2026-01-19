@@ -3,7 +3,7 @@ package handler
 import (
 	"log/slog"
 
-	"spaeth-farms/internal/database/sqlc"
+	"spaeth-farms/pkg/database/sqlc"
 	"spaeth-farms/templates/pages"
 
 	"github.com/labstack/echo/v4"

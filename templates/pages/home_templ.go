@@ -13,8 +13,8 @@ import (
 
 	"github.com/jackc/pgx/v5/pgtype"
 
-	"spaeth-farms/internal/database/sqlc"
-	"spaeth-farms/internal/meta"
+	"spaeth-farms/pkg/database/sqlc"
+	"spaeth-farms/pkg/meta"
 	"spaeth-farms/templates/components"
 	"spaeth-farms/templates/layouts"
 )
@@ -83,7 +83,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 					var templ_7745c5c3_Var3 templ.SafeURL
 					templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(fmt.Sprintf("/products?category=%s", cat.ID)))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 116, Col: 76}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 116, Col: 76}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 					if templ_7745c5c3_Err != nil {
@@ -96,7 +96,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 					var templ_7745c5c3_Var4 string
 					templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/static/images/category-%s.jpg", cat.ID))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 118, Col: 72}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 118, Col: 72}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 					if templ_7745c5c3_Err != nil {
@@ -109,7 +109,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 					var templ_7745c5c3_Var5 string
 					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Name)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 118, Col: 89}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 118, Col: 89}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 					if templ_7745c5c3_Err != nil {
@@ -122,7 +122,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 					var templ_7745c5c3_Var6 string
 					templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Name)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 120, Col: 65}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 120, Col: 65}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 					if templ_7745c5c3_Err != nil {
@@ -140,7 +140,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 						var templ_7745c5c3_Var7 string
 						templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Description.String)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 122, Col: 68}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 122, Col: 68}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 						if templ_7745c5c3_Err != nil {
@@ -175,7 +175,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 						var templ_7745c5c3_Var8 templ.SafeURL
 						templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL(fmt.Sprintf("/products?category=%s", cat.ID)))
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 133, Col: 77}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 133, Col: 77}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 						if templ_7745c5c3_Err != nil {
@@ -188,7 +188,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 						var templ_7745c5c3_Var9 string
 						templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/static/images/category-%s.jpg", cat.ID))
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 135, Col: 73}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 135, Col: 73}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 						if templ_7745c5c3_Err != nil {
@@ -201,7 +201,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 						var templ_7745c5c3_Var10 string
 						templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Name)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 135, Col: 90}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 135, Col: 90}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 						if templ_7745c5c3_Err != nil {
@@ -214,7 +214,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 						var templ_7745c5c3_Var11 string
 						templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Name)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 137, Col: 66}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 137, Col: 66}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 						if templ_7745c5c3_Err != nil {
@@ -232,7 +232,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 							var templ_7745c5c3_Var12 string
 							templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(cat.Description.String)
 							if templ_7745c5c3_Err != nil {
-								return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 139, Col: 69}
+								return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 139, Col: 69}
 							}
 							_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 							if templ_7745c5c3_Err != nil {
@@ -281,7 +281,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 					var templ_7745c5c3_Var13 string
 					templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(t.Content)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 218, Col: 58}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 218, Col: 58}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 					if templ_7745c5c3_Err != nil {
@@ -294,7 +294,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 					var templ_7745c5c3_Var14 string
 					templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(t.Author)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 220, Col: 27}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 220, Col: 27}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 					if templ_7745c5c3_Err != nil {
@@ -312,7 +312,7 @@ func Home(products []sqlc.Product, categories []sqlc.Category, heroSlides []sqlc
 						var templ_7745c5c3_Var15 string
 						templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(t.Location.String)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/home.templ`, Line: 222, Col: 31}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/pages/home.templ`, Line: 222, Col: 31}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 						if templ_7745c5c3_Err != nil {

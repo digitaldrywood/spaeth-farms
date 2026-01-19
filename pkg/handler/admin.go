@@ -8,7 +8,7 @@ import (
 	"github.com/jackc/pgx/v5/pgtype"
 	"github.com/labstack/echo/v4"
 
-	"spaeth-farms/internal/database/sqlc"
+	"spaeth-farms/pkg/database/sqlc"
 	"spaeth-farms/templates/admin"
 )
 

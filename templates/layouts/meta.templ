@@ -1,6 +1,6 @@
 package layouts
 
-import "spaeth-farms/internal/meta"
+import "spaeth-farms/pkg/meta"
 
 templ MetaTags(m meta.PageMeta) {
 	<title>{ m.Title } | { meta.SiteNameFromCtx(ctx) }</title>

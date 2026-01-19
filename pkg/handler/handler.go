@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"spaeth-farms/internal/config"
-	"spaeth-farms/internal/database"
-	"spaeth-farms/internal/middleware"
-	"spaeth-farms/internal/services"
+	"spaeth-farms/pkg/config"
+	"spaeth-farms/pkg/database"
+	"spaeth-farms/pkg/middleware"
+	"spaeth-farms/pkg/services"
 
 	"github.com/labstack/echo/v4"
 )

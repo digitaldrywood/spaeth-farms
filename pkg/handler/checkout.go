@@ -9,8 +9,8 @@ import (
 
 	"github.com/jackc/pgx/v5/pgtype"
 
-	"spaeth-farms/internal/database/sqlc"
-	"spaeth-farms/internal/services"
+	"spaeth-farms/pkg/database/sqlc"
+	"spaeth-farms/pkg/services"
 	"spaeth-farms/templates/pages"
 
 	"github.com/labstack/echo/v4"

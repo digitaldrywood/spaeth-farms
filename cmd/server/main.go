@@ -9,10 +9,10 @@ import (
 	"syscall"
 	"time"
 
-	"spaeth-farms/internal/config"
-	"spaeth-farms/internal/database"
-	"spaeth-farms/internal/handler"
-	"spaeth-farms/internal/middleware"
+	"spaeth-farms/pkg/config"
+	"spaeth-farms/pkg/database"
+	"spaeth-farms/pkg/handler"
+	"spaeth-farms/pkg/middleware"
 
 	"github.com/labstack/echo/v4"
 	_ "github.com/lib/pq"

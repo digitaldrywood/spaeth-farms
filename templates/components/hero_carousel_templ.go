@@ -10,7 +10,7 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"fmt"
-	"spaeth-farms/internal/database/sqlc"
+	"spaeth-farms/pkg/database/sqlc"
 )
 
 func HeroCarousel(slides []sqlc.HeroSlide) templ.Component {
@@ -47,7 +47,7 @@ func HeroCarousel(slides []sqlc.HeroSlide) templ.Component {
 				var templ_7745c5c3_Var2 string
 				templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("current === %d", i))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/hero_carousel.templ`, Line: 14, Col: 47}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/hero_carousel.templ`, Line: 14, Col: 47}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 				if templ_7745c5c3_Err != nil {
@@ -60,7 +60,7 @@ func HeroCarousel(slides []sqlc.HeroSlide) templ.Component {
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(slide.Image)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/hero_carousel.templ`, Line: 24, Col: 24}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/hero_carousel.templ`, Line: 24, Col: 24}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -78,7 +78,7 @@ func HeroCarousel(slides []sqlc.HeroSlide) templ.Component {
 					var templ_7745c5c3_Var4 string
 					templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(slide.AltText.String)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/hero_carousel.templ`, Line: 26, Col: 34}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/hero_carousel.templ`, Line: 26, Col: 34}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 					if templ_7745c5c3_Err != nil {
