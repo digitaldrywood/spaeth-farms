@@ -1,31 +1,11 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "api/index.go",
-      "use": "@vercel/go"
-    },
-    {
-      "src": "static/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "assets/**",
-      "use": "@vercel/static"
-    }
+    { "src": "api/index.go", "use": "@vercel/go" }
   ],
   "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.go"
-    }
+    { "src": "/static/(.*)", "dest": "/public/static/$1" },
+    { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
+    { "src": "/(.*)", "dest": "/api/index.go" }
   ]
 }

@@ -5,8 +5,9 @@
 # debug
 *.log
 
-# Go
+# Go binary
 spaeth-farms
+server
 *.exe
 tmp/
 .tmp/
@@ -15,15 +16,16 @@ tmp/
 .envrc
 .env*
 
-# Generated files (can be regenerated)
-*_templ.go
-internal/database/sqlc/
-
 # Data directory
 data/
 
 # Node dependencies
 node_modules/
 
-# Tailwind output (generated)
-static/css/output.css
+# Next.js (legacy, can be removed)
+.next/
+out/
+next-env.d.ts
+
+# Note: Generated files (*_templ.go, internal/database/sqlc/, static/css/output.css)
+# are now committed for Vercel deployment since Vercel Go runtime doesn't run go generate
