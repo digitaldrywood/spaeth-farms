@@ -1,12 +1,13 @@
 package handler
 
 import (
-	"database/sql"
 	"encoding/json"
 	"fmt"
 	"io"
 	"log/slog"
 	"net/http"
+
+	"github.com/jackc/pgx/v5/pgtype"
 
 	"spaeth-farms/internal/database/sqlc"
 	"spaeth-farms/internal/services"
@@ -45,7 +46,7 @@ func (h *Handler) CheckoutCreateSession(c echo.Context) error {
 
 	// SECURITY: Validate prices server-side by looking up each product
 	// Never trust client-supplied prices
-	var subtotal int64
+	var subtotal int32
 	for i, item := range req.Items {
 		product, err := h.db.Queries.GetProductBySlug(ctx, item.Slug)
 		if err != nil {
@@ -56,7 +57,7 @@ func (h *Handler) CheckoutCreateSession(c echo.Context) error {
 		}
 
 		// Use server-side price, not client-supplied price
-		req.Items[i].Price = product.PriceCents
+		req.Items[i].Price = int64(product.PriceCents)
 		req.Items[i].Name = product.Name
 		if product.Weight.Valid {
 			req.Items[i].Weight = product.Weight.String
@@ -65,7 +66,7 @@ func (h *Handler) CheckoutCreateSession(c echo.Context) error {
 			req.Items[i].Image = product.Image.String
 		}
 
-		subtotal += product.PriceCents * int64(item.Qty)
+		subtotal += product.PriceCents * int32(item.Qty)
 	}
 
 	baseURL := h.cfg.Site.URL
@@ -84,7 +85,7 @@ func (h *Handler) CheckoutCreateSession(c echo.Context) error {
 	itemsJSON, _ := json.Marshal(req.Items)
 
 	// Calculate shipping (free over $199)
-	var shippingCents int64
+	var shippingCents int32
 	if subtotal < 19900 {
 		shippingCents = 2999
 	}
@@ -100,16 +101,16 @@ func (h *Handler) CheckoutCreateSession(c echo.Context) error {
 	customerName := req.Customer.FirstName + " " + req.Customer.LastName
 
 	_, err = h.db.Queries.CreateOrder(ctx, sqlc.CreateOrderParams{
-		StripeSessionID: sql.NullString{String: sess.ID, Valid: true},
+		StripeSessionID: pgtype.Text{String: sess.ID, Valid: true},
 		CustomerEmail:   req.Customer.Email,
-		CustomerName:    sql.NullString{String: customerName, Valid: true},
-		CustomerPhone:   toNullStr(req.Customer.Phone),
-		ShippingAddress: sql.NullString{String: address, Valid: true},
+		CustomerName:    pgtype.Text{String: customerName, Valid: true},
+		CustomerPhone:   toPgText(req.Customer.Phone),
+		ShippingAddress: pgtype.Text{String: address, Valid: true},
 		Items:           string(itemsJSON),
 		SubtotalCents:   subtotal,
-		ShippingCents:   sql.NullInt64{Int64: shippingCents, Valid: true},
+		ShippingCents:   pgtype.Int4{Int32: shippingCents, Valid: true},
 		TotalCents:      totalCents,
-		Status:          sql.NullString{String: "pending", Valid: true},
+		Status:          pgtype.Text{String: "pending", Valid: true},
 	})
 	if err != nil {
 		slog.Error("failed to create order", "error", err)
@@ -132,8 +133,8 @@ func (h *Handler) CheckoutSuccess(c echo.Context) error {
 		} else {
 			// Update order status
 			err = h.db.Queries.UpdateOrderStatusBySession(ctx, sqlc.UpdateOrderStatusBySessionParams{
-				Status:          sql.NullString{String: "completed", Valid: true},
-				StripeSessionID: sql.NullString{String: sessionID, Valid: true},
+				Status:          pgtype.Text{String: "completed", Valid: true},
+				StripeSessionID: pgtype.Text{String: sessionID, Valid: true},
 			})
 			if err != nil {
 				slog.Error("failed to update order status", "error", err)
@@ -175,12 +176,5 @@ func (h *Handler) StripeWebhook(c echo.Context) error {
 	}
 
 	return c.NoContent(http.StatusOK)
-}
-
-func toNullStr(s string) sql.NullString {
-	if s == "" {
-		return sql.NullString{Valid: false}
-	}
-	return sql.NullString{String: s, Valid: true}
 }
 

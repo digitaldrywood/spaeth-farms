@@ -45,7 +45,7 @@ func (m PageMeta) WithNoIndex() PageMeta {
 }
 
 // ForProduct creates meta for a product page
-func ForProduct(name, description string, priceCents int64, image string) PageMeta {
+func ForProduct(name, description string, priceCents int32, image string) PageMeta {
 	priceStr := fmt.Sprintf("$%.2f", float64(priceCents)/100)
 	desc := fmt.Sprintf("%s - %s | Shop premium Wisconsin beef at Spaeth Farms", name, priceStr)
 	if description != "" {

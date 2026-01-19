@@ -7,7 +7,7 @@ CREATE TABLE categories (
 );
 
 CREATE TABLE products (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL PRIMARY KEY,
     slug TEXT UNIQUE NOT NULL,
     name TEXT NOT NULL,
     category_id TEXT REFERENCES categories(id),
@@ -15,10 +15,10 @@ CREATE TABLE products (
     weight TEXT,
     description TEXT,
     image TEXT,
-    featured INTEGER DEFAULT 0,
-    in_stock INTEGER DEFAULT 1,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    featured BOOLEAN DEFAULT FALSE,
+    in_stock BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX idx_products_category ON products(category_id);
@@ -26,23 +26,23 @@ CREATE INDEX idx_products_featured ON products(featured);
 CREATE INDEX idx_products_slug ON products(slug);
 
 CREATE TABLE testimonials (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL PRIMARY KEY,
     author TEXT NOT NULL,
     location TEXT,
     content TEXT NOT NULL,
     rating INTEGER DEFAULT 5,
-    featured INTEGER DEFAULT 0,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    featured BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE site_settings (
     key TEXT PRIMARY KEY,
     value TEXT,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE orders (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL PRIMARY KEY,
     stripe_session_id TEXT UNIQUE,
     stripe_payment_intent TEXT,
     customer_email TEXT NOT NULL,
@@ -55,30 +55,30 @@ CREATE TABLE orders (
     total_cents INTEGER NOT NULL,
     status TEXT DEFAULT 'pending',
     notes TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX idx_orders_status ON orders(status);
 CREATE INDEX idx_orders_email ON orders(customer_email);
 
 CREATE TABLE hero_slides (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL PRIMARY KEY,
     image TEXT NOT NULL,
     alt_text TEXT,
     sort_order INTEGER DEFAULT 0,
-    active INTEGER DEFAULT 1
+    active BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE contact_submissions (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     email TEXT NOT NULL,
     phone TEXT,
     subject TEXT,
     message TEXT NOT NULL,
-    read INTEGER DEFAULT 0,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    read BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 -- +goose Down

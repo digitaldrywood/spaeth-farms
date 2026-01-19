@@ -1,15 +1,15 @@
 package handler
 
 import (
-	"database/sql"
 	"log/slog"
 	"net/http"
 	"strconv"
 
+	"github.com/jackc/pgx/v5/pgtype"
+	"github.com/labstack/echo/v4"
+
 	"spaeth-farms/internal/database/sqlc"
 	"spaeth-farms/templates/admin"
-
-	"github.com/labstack/echo/v4"
 )
 
 func (h *Handler) AdminDashboard(c echo.Context) error {
@@ -75,7 +75,7 @@ func (h *Handler) AdminProductSave(c echo.Context) error {
 	if err != nil {
 		return c.String(http.StatusBadRequest, "Invalid price")
 	}
-	priceCents := int64(price * 100)
+	priceCents := int32(price * 100)
 
 	// Check if product exists
 	existingID := c.FormValue("id")
@@ -83,13 +83,13 @@ func (h *Handler) AdminProductSave(c echo.Context) error {
 		// Update existing
 		err = h.db.Queries.UpdateProductBySlug(ctx, sqlc.UpdateProductBySlugParams{
 			Name:        name,
-			CategoryID:  toNullString(categoryID),
+			CategoryID:  toPgText(categoryID),
 			PriceCents:  priceCents,
-			Weight:      toNullString(weight),
-			Description: toNullString(description),
-			Image:       toNullString(image),
-			Featured:    toNullInt64(featured),
-			InStock:     toNullInt64(inStock),
+			Weight:      toPgText(weight),
+			Description: toPgText(description),
+			Image:       toPgText(image),
+			Featured:    pgtype.Bool{Bool: featured, Valid: true},
+			InStock:     pgtype.Bool{Bool: inStock, Valid: true},
 			Slug:        slug,
 		})
 	} else {
@@ -97,13 +97,13 @@ func (h *Handler) AdminProductSave(c echo.Context) error {
 		_, err = h.db.Queries.CreateProduct(ctx, sqlc.CreateProductParams{
 			Slug:        slug,
 			Name:        name,
-			CategoryID:  toNullString(categoryID),
+			CategoryID:  toPgText(categoryID),
 			PriceCents:  priceCents,
-			Weight:      toNullString(weight),
-			Description: toNullString(description),
-			Image:       toNullString(image),
-			Featured:    toNullInt64(featured),
-			InStock:     toNullInt64(inStock),
+			Weight:      toPgText(weight),
+			Description: toPgText(description),
+			Image:       toPgText(image),
+			Featured:    pgtype.Bool{Bool: featured, Valid: true},
+			InStock:     pgtype.Bool{Bool: inStock, Valid: true},
 		})
 	}
 
@@ -115,30 +115,23 @@ func (h *Handler) AdminProductSave(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, "/admin/products")
 }
 
-func toNullString(s string) sql.NullString {
+func toPgText(s string) pgtype.Text {
 	if s == "" {
-		return sql.NullString{Valid: false}
+		return pgtype.Text{Valid: false}
 	}
-	return sql.NullString{String: s, Valid: true}
-}
-
-func toNullInt64(b bool) sql.NullInt64 {
-	if b {
-		return sql.NullInt64{Int64: 1, Valid: true}
-	}
-	return sql.NullInt64{Int64: 0, Valid: true}
+	return pgtype.Text{String: s, Valid: true}
 }
 
 func (h *Handler) AdminProductDelete(c echo.Context) error {
 	ctx := c.Request().Context()
 	idStr := c.Param("id")
 
-	id, err := strconv.ParseInt(idStr, 10, 64)
+	id, err := strconv.ParseInt(idStr, 10, 32)
 	if err != nil {
 		return c.String(http.StatusBadRequest, "Invalid ID")
 	}
 
-	if err := h.db.Queries.DeleteProduct(ctx, id); err != nil {
+	if err := h.db.Queries.DeleteProduct(ctx, int32(id)); err != nil {
 		slog.Error("failed to delete product", "id", id, "error", err)
 		return c.String(http.StatusInternalServerError, "Failed to delete product")
 	}
@@ -202,7 +195,7 @@ func (h *Handler) AdminSettingsSave(c echo.Context) error {
 			value := values[0]
 			err := h.db.Queries.UpsertSetting(ctx, sqlc.UpsertSettingParams{
 				Key:   key,
-				Value: toNullString(value),
+				Value: toPgText(value),
 			})
 			if err != nil {
 				slog.Error("failed to save setting", "key", key, "error", err)
