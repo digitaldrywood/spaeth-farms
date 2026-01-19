@@ -19,11 +19,8 @@ tmp/
 *_templ.go
 internal/database/sqlc/
 
-# SQLite database
-data/*.db
-data/*.db-journal
-data/*.db-wal
-data/*.db-shm
+# Data directory
+data/
 
 # Node dependencies
 node_modules/
