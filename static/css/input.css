@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @source "../../templates/**/*.templ";
+@source "../../components/**/*.templ";
 
 @theme {
   /* Stone color palette for earthy farm feel */
@@ -37,6 +38,16 @@
 
   /* Secondary color (dark forest green, matches original site #1e5631) */
   --color-secondary: oklch(0.35 0.08 152);
+
+  /* Semantic colors for templUI components */
+  --color-background: var(--color-stone-50);
+  --color-foreground: var(--color-stone-900);
+  --color-border: var(--color-stone-200);
+  --color-muted: var(--color-stone-100);
+  --color-muted-foreground: var(--color-stone-500);
+  --color-accent: var(--color-stone-100);
+  --color-accent-foreground: var(--color-stone-900);
+  --color-ring: var(--color-green-700);
 }
 
 @layer base {

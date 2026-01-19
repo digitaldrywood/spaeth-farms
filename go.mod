@@ -3,6 +3,7 @@ module spaeth-farms
 go 1.24.0
 
 require (
+	github.com/Oudwins/tailwind-merge-go v0.2.1
 	github.com/a-h/templ v0.3.977
 	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/jackc/pgx/v5 v5.8.0

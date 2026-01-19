@@ -30,6 +30,7 @@ func New(cfg *config.Config, db *database.DB) *Handler {
 func (h *Handler) RegisterRoutes(e *echo.Echo) {
 	// Static files
 	e.Static("/static", "static")
+	e.Static("/assets", "assets")
 
 	// Health check
 	e.GET("/health", h.Health)
