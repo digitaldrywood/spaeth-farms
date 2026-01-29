@@ -46,6 +46,7 @@ func (h *Handler) RegisterRoutes(e *echo.Echo) {
 	e.GET("/faq", h.FAQ)
 	e.GET("/shipping", h.Shipping)
 	e.GET("/genetics", h.Genetics)
+	e.GET("/for-sale", h.ForSale)
 
 	// Cart API (HTMX)
 	e.GET("/api/cart", h.CartGet)

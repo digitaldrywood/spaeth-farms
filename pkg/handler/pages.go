@@ -50,6 +50,17 @@ func (h *Handler) Genetics(c echo.Context) error {
 	return pages.Genetics(phone).Render(ctx, c.Response().Writer)
 }
 
+func (h *Handler) ForSale(c echo.Context) error {
+	ctx := c.Request().Context()
+
+	phone := "(715) 313-0075"
+	if setting, err := h.db.Queries.GetSetting(ctx, "phone"); err == nil && setting.Value.Valid {
+		phone = setting.Value.String
+	}
+
+	return pages.ForSale(phone).Render(ctx, c.Response().Writer)
+}
+
 func (h *Handler) Contact(c echo.Context) error {
 	ctx := c.Request().Context()
 

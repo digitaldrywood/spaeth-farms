@@ -31,14 +31,14 @@ func Footer(phone, email, address string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<footer class=\"bg-stone-900 text-white\"><!-- Main Footer --><div class=\"max-w-7xl mx-auto px-4 py-16\"><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12\"><!-- Brand Column --><div class=\"lg:col-span-1\"><div class=\"mb-6\"><img src=\"/static/images/logo.png\" alt=\"Spaeth Farms\" class=\"h-16 w-auto brightness-0 invert\"></div><p class=\"text-stone-300 mb-6 leading-relaxed\">Family-owned and operated since generations. We raise our cattle with care on the rolling hills of Wisconsin, delivering premium beef directly to your door.</p><div class=\"flex space-x-4\"><a href=\"https://www.facebook.com/Spaeth-Farms\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-stone-400 hover:text-white transition-colors\" aria-label=\"Facebook\"><svg class=\"w-6 h-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z\"></path></svg></a></div></div><!-- Quick Links --><div><h4 class=\"text-lg font-semibold mb-6\">Quick Links</h4><ul class=\"space-y-3\"><li><a href=\"/products\" class=\"text-stone-300 hover:text-white transition-colors\">Shop All Beef</a></li><li><a href=\"/products?category=steaks\" class=\"text-stone-300 hover:text-white transition-colors\">Premium Steaks</a></li><li><a href=\"/products?category=bundles\" class=\"text-stone-300 hover:text-white transition-colors\">Bundles &amp; Shares</a></li><li><a href=\"/genetics\" class=\"text-stone-300 hover:text-white transition-colors\">Genetics Program</a></li><li><a href=\"/about\" class=\"text-stone-300 hover:text-white transition-colors\">Our Story</a></li><li><a href=\"/shipping\" class=\"text-stone-300 hover:text-white transition-colors\">Shipping Info</a></li></ul></div><!-- Customer Service --><div><h4 class=\"text-lg font-semibold mb-6\">Customer Service</h4><ul class=\"space-y-3\"><li><a href=\"/faq\" class=\"text-stone-300 hover:text-white transition-colors\">FAQ</a></li><li><a href=\"/contact\" class=\"text-stone-300 hover:text-white transition-colors\">Contact Us</a></li><li><a href=\"/shipping\" class=\"text-stone-300 hover:text-white transition-colors\">Shipping Policy</a></li><li><a href=\"/shipping#returns\" class=\"text-stone-300 hover:text-white transition-colors\">Returns &amp; Refunds</a></li></ul></div><!-- Contact Info --><div><h4 class=\"text-lg font-semibold mb-6\">Get In Touch</h4><ul class=\"space-y-4\"><li class=\"flex items-start space-x-3\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z\"></path></svg><div><p class=\"text-stone-300\"><a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<footer class=\"bg-stone-900 text-white\"><!-- Main Footer --><div class=\"max-w-7xl mx-auto px-4 py-16\"><div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12\"><!-- Brand Column --><div class=\"lg:col-span-1\"><div class=\"mb-6\"><img src=\"/static/images/logo.png\" alt=\"Spaeth Farms\" class=\"h-16 w-auto brightness-0 invert\"></div><p class=\"text-stone-300 mb-6 leading-relaxed\">Family-owned and operated since generations. We raise our cattle with care on the rolling hills of Wisconsin, delivering premium beef directly to your door.</p><div class=\"flex space-x-4\"><a href=\"https://www.facebook.com/Spaeth-Farms\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-stone-400 hover:text-white transition-colors\" aria-label=\"Facebook\"><svg class=\"w-6 h-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z\"></path></svg></a></div></div><!-- Quick Links --><div><h4 class=\"text-lg font-semibold mb-6\">Quick Links</h4><ul class=\"space-y-3\"><li><a href=\"/products\" class=\"text-stone-300 hover:text-white transition-colors\">Shop All Beef</a></li><li><a href=\"/products?category=steaks\" class=\"text-stone-300 hover:text-white transition-colors\">Premium Steaks</a></li><li><a href=\"/products?category=bundles\" class=\"text-stone-300 hover:text-white transition-colors\">Bundles &amp; Shares</a></li><li><a href=\"/genetics\" class=\"text-stone-300 hover:text-white transition-colors\">Genetics Program</a></li><li><a href=\"/for-sale\" class=\"text-stone-300 hover:text-white transition-colors\">Cattle For Sale</a></li><li><a href=\"/about\" class=\"text-stone-300 hover:text-white transition-colors\">Our Story</a></li><li><a href=\"/shipping\" class=\"text-stone-300 hover:text-white transition-colors\">Shipping Info</a></li></ul></div><!-- Customer Service --><div><h4 class=\"text-lg font-semibold mb-6\">Customer Service</h4><ul class=\"space-y-3\"><li><a href=\"/faq\" class=\"text-stone-300 hover:text-white transition-colors\">FAQ</a></li><li><a href=\"/contact\" class=\"text-stone-300 hover:text-white transition-colors\">Contact Us</a></li><li><a href=\"/shipping\" class=\"text-stone-300 hover:text-white transition-colors\">Shipping Policy</a></li><li><a href=\"/shipping#returns\" class=\"text-stone-300 hover:text-white transition-colors\">Returns &amp; Refunds</a></li></ul></div><!-- Contact Info --><div><h4 class=\"text-lg font-semibold mb-6\">Get In Touch</h4><ul class=\"space-y-4\"><li class=\"flex items-start space-x-3\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z\"></path></svg><div><p class=\"text-stone-300\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 templ.SafeURL
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL("tel:" + phone))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 108, Col: 48}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 113, Col: 48}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -51,7 +51,7 @@ func Footer(phone, email, address string) templ.Component {
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(phone)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 108, Col: 130}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 113, Col: 130}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -64,7 +64,7 @@ func Footer(phone, email, address string) templ.Component {
 		var templ_7745c5c3_Var4 templ.SafeURL
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinURLErrs(templ.SafeURL("mailto:" + email))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 116, Col: 49}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 121, Col: 49}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -77,7 +77,7 @@ func Footer(phone, email, address string) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(email)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 117, Col: 15}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 122, Col: 15}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -90,7 +90,7 @@ func Footer(phone, email, address string) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(address)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 126, Col: 17}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 131, Col: 17}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -103,7 +103,7 @@ func Footer(phone, email, address string) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(getCurrentYear())
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 138, Col: 27}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 143, Col: 27}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {

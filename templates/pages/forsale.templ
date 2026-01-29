@@ -1,0 +1,509 @@
+package pages
+
+import (
+	"spaeth-farms/pkg/meta"
+	"spaeth-farms/templates/layouts"
+)
+
+type EmbryoPackage struct {
+	Name         string
+	Registration string
+	Image        string
+	Sires        []string
+}
+
+type Cow struct {
+	Name         string
+	Registration string
+	Image        string
+	AISire       string
+	BreedingDate string
+	CalvingDate  string
+	RecentCalf   string
+	EPDLink      string
+}
+
+type BredHeifer struct {
+	Name         string
+	Registration string
+	Image        string
+	CalvingDate  string
+	Sire         string
+	EPDLink      string
+}
+
+type Bull struct {
+	Name      string
+	BirthDate string
+	Image     string
+	EPDLink   string
+}
+
+func getEmbryoPackages() []EmbryoPackage {
+	return []EmbryoPackage{
+		{
+			Name:         "Perks 3084 Hometown Lady 5048",
+			Registration: "43609004",
+			Image:        "/static/images/cattle/embryo-1.jpg",
+			Sires:        []string{"Red Baron", "Genesis", "2296", "Fresh Prince", "Montgomery", "Blueprint"},
+		},
+		{
+			Name:         "H FHF Rita 8444 ET",
+			Registration: "43916595",
+			Image:        "/static/images/cattle/embryo-2.jpg",
+			Sires:        []string{"American Classic", "Majestic", "Montgomery", "Genesis"},
+		},
+		{
+			Name:         "TBC Ember 200ET",
+			Registration: "44394748",
+			Image:        "/static/images/cattle/embryo-3.jpg",
+			Sires:        []string{},
+		},
+		{
+			Name:         "ANL 71D Jade 3F 13K",
+			Registration: "44563532",
+			Image:        "/static/images/cattle/embryo-4.jpg",
+			Sires:        []string{"Profit", "Oshoto"},
+		},
+	}
+}
+
+func getCows() []Cow {
+	return []Cow{
+		{
+			Name:         "SF 5048 Maggie May 2430",
+			Registration: "44661234",
+			AISire:       "Churchill W4 Sherman 2157K ET",
+			BreedingDate: "May 15, 2025",
+			CalvingDate:  "February 2026",
+			RecentCalf:   "Heifer calf by Genesis (Feb 2025)",
+			EPDLink:      "https://hereford.org/genetics/animal/44661234",
+		},
+		{
+			Name:         "SF 8444 Lady Rita 2356",
+			Registration: "44567890",
+			AISire:       "Lowen Genesis G16 ET",
+			BreedingDate: "May 20, 2025",
+			CalvingDate:  "February 2026",
+			RecentCalf:   "Bull calf by Blueprint (Mar 2025)",
+			EPDLink:      "https://hereford.org/genetics/animal/44567890",
+		},
+		{
+			Name:         "SF Hometown Jewel 2289",
+			Registration: "44512345",
+			AISire:       "NJW 73S W18 Hometown 10Y ET",
+			BreedingDate: "June 1, 2025",
+			CalvingDate:  "March 2026",
+			RecentCalf:   "Heifer calf by Montgomery (Feb 2025)",
+			EPDLink:      "https://hereford.org/genetics/animal/44512345",
+		},
+	}
+}
+
+func getBredHeifers() []BredHeifer {
+	return []BredHeifer{
+		{
+			Name:         "SF 2430 Maggie 2501",
+			Registration: "44789012",
+			CalvingDate:  "January 2026",
+			Sire:         "Churchill Jack Frost 458M ET",
+			EPDLink:      "https://hereford.org/genetics/animal/44789012",
+		},
+		{
+			Name:         "SF 2356 Rita Belle 2509",
+			Registration: "44789234",
+			CalvingDate:  "February 2026",
+			Sire:         "Lowen Genesis G16 ET",
+			EPDLink:      "https://hereford.org/genetics/animal/44789234",
+		},
+		{
+			Name:         "SF 2289 Jewel Diamond 2515",
+			Registration: "44789456",
+			CalvingDate:  "March 2026",
+			Sire:         "NJW 73S W18 Hometown 10Y ET",
+			EPDLink:      "https://hereford.org/genetics/animal/44789456",
+		},
+	}
+}
+
+func getBulls() []Bull {
+	return []Bull{
+		{
+			Name:      "SF 8444 561C PIP 2438ET",
+			BirthDate: "January 15, 2024",
+			EPDLink:   "https://hereford.org/genetics/animal/44890123",
+		},
+		{
+			Name:      "SF 7J Houston Apollo 24440",
+			BirthDate: "February 8, 2024",
+			EPDLink:   "https://hereford.org/genetics/animal/44890234",
+		},
+		{
+			Name:      "SF 2237 33Z KING 2413",
+			BirthDate: "January 28, 2024",
+			EPDLink:   "https://hereford.org/genetics/animal/44890345",
+		},
+		{
+			Name:      "SF Genesis Prime 2445",
+			BirthDate: "March 2, 2024",
+			EPDLink:   "https://hereford.org/genetics/animal/44890456",
+		},
+	}
+}
+
+templ ForSale(phone string) {
+	@layouts.Base(meta.New("Cattle For Sale", "Browse registered Polled Hereford cattle for sale at Spaeth Farms. Embryo packages, bred cows, bred heifers, and bulls available. Quality genetics from Wisconsin.")) {
+		<!-- Hero Section -->
+		<section class="relative bg-stone-900 text-white py-20">
+			<div class="absolute inset-0 overflow-hidden">
+				<img
+					src="/static/images/hereford-herd-2.jpg"
+					alt="Spaeth Farms Hereford cattle for sale"
+					class="w-full h-full object-cover opacity-30"
+				/>
+			</div>
+			<div class="max-w-7xl mx-auto px-4 relative z-10">
+				<div class="max-w-3xl">
+					<p class="text-amber-400 font-semibold mb-2">Registered Polled Herefords</p>
+					<h1 class="text-4xl md:text-5xl font-bold mb-6">Cattle For Sale</h1>
+					<p class="text-xl text-stone-300 mb-8">
+						Quality registered Polled Hereford genetics from our family farm. We offer embryo packages,
+						bred cows, bred heifers, and bulls selected for docility, structure, and maternal excellence.
+					</p>
+					<div class="flex flex-wrap gap-4">
+						<a href="#embryos" class="bg-green-700 text-white px-6 py-3 rounded font-semibold hover:bg-green-800 transition-colors">
+							View Embryo Packages
+						</a>
+						<a
+							href={ templ.SafeURL("tel:" + phone) }
+							class="border-2 border-white text-white px-6 py-3 rounded font-semibold hover:bg-white hover:text-stone-900 transition-colors"
+						>
+							Call for Pricing
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Quick Navigation -->
+		<section class="py-6 bg-stone-100 border-b border-stone-200">
+			<div class="max-w-7xl mx-auto px-4">
+				<div class="flex flex-wrap justify-center gap-4">
+					<a href="#embryos" class="px-4 py-2 bg-white rounded-full border border-stone-300 text-stone-700 hover:border-green-700 hover:text-green-700 transition-colors font-medium">
+						Embryo Packages
+					</a>
+					<a href="#cows" class="px-4 py-2 bg-white rounded-full border border-stone-300 text-stone-700 hover:border-green-700 hover:text-green-700 transition-colors font-medium">
+						Bred Cows
+					</a>
+					<a href="#heifers" class="px-4 py-2 bg-white rounded-full border border-stone-300 text-stone-700 hover:border-green-700 hover:text-green-700 transition-colors font-medium">
+						Bred Heifers
+					</a>
+					<a href="#bulls" class="px-4 py-2 bg-white rounded-full border border-stone-300 text-stone-700 hover:border-green-700 hover:text-green-700 transition-colors font-medium">
+						Bulls Available
+					</a>
+				</div>
+			</div>
+		</section>
+		<!-- Embryo Packages Section -->
+		<section id="embryos" class="py-16 bg-white scroll-mt-20">
+			<div class="max-w-7xl mx-auto px-4">
+				<div class="text-center mb-12">
+					<h2 class="text-3xl font-bold mb-4">Embryo Packages</h2>
+					<p class="text-stone-600 max-w-2xl mx-auto">
+						Premium embryo packages from our top donor females. Multiple sire options available
+						to match your breeding goals.
+					</p>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					for _, pkg := range getEmbryoPackages() {
+						@embryoCard(pkg)
+					}
+				</div>
+			</div>
+		</section>
+		<!-- Bred Cows Section -->
+		<section id="cows" class="py-16 bg-stone-50 scroll-mt-20">
+			<div class="max-w-7xl mx-auto px-4">
+				<div class="text-center mb-12">
+					<h2 class="text-3xl font-bold mb-4">Bred Cows</h2>
+					<p class="text-stone-600 max-w-2xl mx-auto">
+						Proven producers with documented calving history. All cows are AI bred to top sires
+						with expected calving dates provided.
+					</p>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					for _, cow := range getCows() {
+						@cowCard(cow)
+					}
+				</div>
+			</div>
+		</section>
+		<!-- Bred Heifers Section -->
+		<section id="heifers" class="py-16 bg-white scroll-mt-20">
+			<div class="max-w-7xl mx-auto px-4">
+				<div class="text-center mb-12">
+					<h2 class="text-3xl font-bold mb-4">Bred Heifers</h2>
+					<p class="text-stone-600 max-w-2xl mx-auto">
+						Quality bred heifers ready to calve and start producing for your operation.
+						All from our proven cow families.
+					</p>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					for _, heifer := range getBredHeifers() {
+						@heiferCard(heifer)
+					}
+				</div>
+			</div>
+		</section>
+		<!-- Bulls Section -->
+		<section id="bulls" class="py-16 bg-stone-50 scroll-mt-20">
+			<div class="max-w-7xl mx-auto px-4">
+				<div class="text-center mb-12">
+					<h2 class="text-3xl font-bold mb-4">Bulls Available</h2>
+					<p class="text-stone-600 max-w-2xl mx-auto">
+						Herd sire prospects with proven genetics. All bulls are semen tested and ready to work.
+					</p>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+					for _, bull := range getBulls() {
+						@bullCard(bull)
+					}
+				</div>
+			</div>
+		</section>
+		<!-- Pricing Notice -->
+		<section class="py-12 bg-amber-50 border-y border-amber-200">
+			<div class="max-w-7xl mx-auto px-4">
+				<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+					<div class="flex items-start gap-4">
+						<div class="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center flex-shrink-0">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-amber-900">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"></path>
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-bold text-stone-900 text-lg">Pricing & Viewing</h3>
+							<p class="text-stone-600">
+								For prices of animals or to schedule a time to view the animals in-person,
+								please give us a call. We're happy to answer any questions about our genetics.
+							</p>
+						</div>
+					</div>
+					<a
+						href={ templ.SafeURL("tel:" + phone) }
+						class="bg-green-700 text-white px-6 py-3 rounded font-semibold hover:bg-green-800 transition-colors whitespace-nowrap"
+					>
+						Call Josh: { phone }
+					</a>
+				</div>
+			</div>
+		</section>
+		<!-- Contact CTA -->
+		<section class="py-16 bg-stone-900 text-white">
+			<div class="max-w-7xl mx-auto px-4 text-center">
+				<h2 class="text-3xl font-bold mb-4">Ready to Add Quality Genetics?</h2>
+				<p class="text-stone-300 max-w-2xl mx-auto mb-8">
+					Whether you're looking for show prospects, breeding stock, or herd bulls,
+					we'd love to help you find the right fit. Contact us today to discuss available cattle.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<a href="/contact" class="bg-green-700 text-white px-6 py-3 rounded font-semibold hover:bg-green-800 transition-colors">
+						Contact Us
+					</a>
+					<a href="/genetics" class="border-2 border-white text-white px-6 py-3 rounded font-semibold hover:bg-white hover:text-stone-900 transition-colors">
+						View Our Genetics Program
+					</a>
+				</div>
+			</div>
+		</section>
+		<!-- Location Section -->
+		<section class="py-12 bg-white border-t border-stone-200">
+			<div class="max-w-7xl mx-auto px-4">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+					<div>
+						<div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-700">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path>
+							</svg>
+						</div>
+						<h3 class="font-bold text-stone-900 mb-1">Location</h3>
+						<p class="text-stone-600">2515 250th Street<br/>Cadott, WI 54727</p>
+					</div>
+					<div>
+						<div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-700">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"></path>
+							</svg>
+						</div>
+						<h3 class="font-bold text-stone-900 mb-1">Phone</h3>
+						<p class="text-stone-600">Josh: (715) 313-0075<br/>Amy: (715) 313-0076</p>
+					</div>
+					<div>
+						<div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-700">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path>
+							</svg>
+						</div>
+						<h3 class="font-bold text-stone-900 mb-1">Email</h3>
+						<p class="text-stone-600">spaethherefords@gmail.com</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	}
+}
+
+templ embryoCard(pkg EmbryoPackage) {
+	<div class="bg-stone-50 rounded-lg overflow-hidden border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+		<div class="relative h-64 bg-stone-200">
+			<div class="w-full h-full flex items-center justify-center text-stone-400">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-16 h-16">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+				</svg>
+			</div>
+			<div class="absolute top-4 left-4">
+				<span class="bg-green-700 text-white px-3 py-1 rounded-full text-sm font-medium">
+					Embryo Package
+				</span>
+			</div>
+		</div>
+		<div class="p-6">
+			<h3 class="text-xl font-bold mb-1">{ pkg.Name }</h3>
+			<p class="text-sm text-stone-500 mb-4">Reg #{ pkg.Registration }</p>
+			if len(pkg.Sires) > 0 {
+				<div class="mb-4">
+					<p class="text-sm font-semibold text-stone-700 mb-2">Available Sire Options:</p>
+					<div class="flex flex-wrap gap-2">
+						for _, sire := range pkg.Sires {
+							<span class="bg-stone-100 text-stone-700 px-2 py-1 rounded text-xs">{ sire }</span>
+						}
+					</div>
+				</div>
+			}
+			<p class="text-sm text-stone-600">
+				Contact us for package pricing and sire availability.
+			</p>
+		</div>
+	</div>
+}
+
+templ cowCard(cow Cow) {
+	<div class="bg-white rounded-lg border border-stone-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+		<div class="relative h-48 bg-stone-200">
+			<div class="w-full h-full flex items-center justify-center text-stone-400">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-12 h-12">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+				</svg>
+			</div>
+			<div class="absolute top-3 left-3">
+				<span class="bg-amber-500 text-white px-2 py-0.5 rounded text-xs font-medium">
+					Bred Cow
+				</span>
+			</div>
+		</div>
+		<div class="p-4">
+			<h3 class="font-bold text-stone-900 mb-1">{ cow.Name }</h3>
+			<p class="text-xs text-stone-500 mb-3">Reg #{ cow.Registration }</p>
+			<div class="space-y-2 text-sm">
+				<div class="flex justify-between">
+					<span class="text-stone-500">AI Sire:</span>
+					<span class="text-stone-900 font-medium text-right">{ cow.AISire }</span>
+				</div>
+				<div class="flex justify-between">
+					<span class="text-stone-500">Due:</span>
+					<span class="text-stone-900">{ cow.CalvingDate }</span>
+				</div>
+				if cow.RecentCalf != "" {
+					<div class="pt-2 border-t border-stone-100">
+						<span class="text-xs text-stone-500">Recent: { cow.RecentCalf }</span>
+					</div>
+				}
+			</div>
+			<a
+				href={ templ.SafeURL(cow.EPDLink) }
+				target="_blank"
+				rel="noopener noreferrer"
+				class="mt-4 inline-flex items-center gap-1 text-green-700 text-sm font-medium hover:text-green-800"
+			>
+				View EPDs
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+				</svg>
+			</a>
+		</div>
+	</div>
+}
+
+templ heiferCard(heifer BredHeifer) {
+	<div class="bg-stone-50 rounded-lg border border-stone-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+		<div class="relative h-48 bg-stone-200">
+			<div class="w-full h-full flex items-center justify-center text-stone-400">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-12 h-12">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+				</svg>
+			</div>
+			<div class="absolute top-3 left-3">
+				<span class="bg-green-600 text-white px-2 py-0.5 rounded text-xs font-medium">
+					Bred Heifer
+				</span>
+			</div>
+		</div>
+		<div class="p-4">
+			<h3 class="font-bold text-stone-900 mb-1">{ heifer.Name }</h3>
+			<p class="text-xs text-stone-500 mb-3">Reg #{ heifer.Registration }</p>
+			<div class="space-y-2 text-sm">
+				<div class="flex justify-between">
+					<span class="text-stone-500">Sire:</span>
+					<span class="text-stone-900 font-medium text-right">{ heifer.Sire }</span>
+				</div>
+				<div class="flex justify-between">
+					<span class="text-stone-500">Due:</span>
+					<span class="text-stone-900">{ heifer.CalvingDate }</span>
+				</div>
+			</div>
+			<a
+				href={ templ.SafeURL(heifer.EPDLink) }
+				target="_blank"
+				rel="noopener noreferrer"
+				class="mt-4 inline-flex items-center gap-1 text-green-700 text-sm font-medium hover:text-green-800"
+			>
+				View EPDs
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+				</svg>
+			</a>
+		</div>
+	</div>
+}
+
+templ bullCard(bull Bull) {
+	<div class="bg-white rounded-lg border border-stone-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+		<div class="relative h-40 bg-stone-200">
+			<div class="w-full h-full flex items-center justify-center text-stone-400">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-12 h-12">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+				</svg>
+			</div>
+			<div class="absolute top-3 left-3">
+				<span class="bg-stone-800 text-white px-2 py-0.5 rounded text-xs font-medium">
+					Bull
+				</span>
+			</div>
+		</div>
+		<div class="p-4">
+			<h3 class="font-bold text-stone-900 text-sm mb-1">{ bull.Name }</h3>
+			<p class="text-xs text-stone-500 mb-3">Born: { bull.BirthDate }</p>
+			<a
+				href={ templ.SafeURL(bull.EPDLink) }
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex items-center gap-1 text-green-700 text-sm font-medium hover:text-green-800"
+			>
+				View EPDs
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+				</svg>
+			</a>
+		</div>
+	</div>
+}
