@@ -19,32 +19,41 @@ type HomeData struct {
 func (h *Handler) Home(c echo.Context) error {
 	ctx := c.Request().Context()
 
-	// Fetch featured products
-	featured, err := h.db.Queries.ListFeaturedProducts(ctx)
-	if err != nil {
-		slog.Error("failed to fetch featured products", "error", err)
-		featured = []sqlc.Product{}
-	}
+	var featured []sqlc.Product
+	var categories []sqlc.Category
+	var slides []sqlc.HeroSlide
+	var testimonials []sqlc.Testimonial
 
-	// Fetch categories
-	categories, err := h.db.Queries.ListCategories(ctx)
-	if err != nil {
-		slog.Error("failed to fetch categories", "error", err)
-		categories = []sqlc.Category{}
-	}
+	if h.db != nil {
+		var err error
 
-	// Fetch hero slides
-	slides, err := h.db.Queries.ListActiveHeroSlides(ctx)
-	if err != nil {
-		slog.Error("failed to fetch hero slides", "error", err)
-		slides = []sqlc.HeroSlide{}
-	}
+		// Fetch featured products
+		featured, err = h.db.Queries.ListFeaturedProducts(ctx)
+		if err != nil {
+			slog.Error("failed to fetch featured products", "error", err)
+			featured = []sqlc.Product{}
+		}
 
-	// Fetch testimonials
-	testimonials, err := h.db.Queries.ListFeaturedTestimonials(ctx)
-	if err != nil {
-		slog.Error("failed to fetch testimonials", "error", err)
-		testimonials = []sqlc.Testimonial{}
+		// Fetch categories
+		categories, err = h.db.Queries.ListCategories(ctx)
+		if err != nil {
+			slog.Error("failed to fetch categories", "error", err)
+			categories = []sqlc.Category{}
+		}
+
+		// Fetch hero slides
+		slides, err = h.db.Queries.ListActiveHeroSlides(ctx)
+		if err != nil {
+			slog.Error("failed to fetch hero slides", "error", err)
+			slides = []sqlc.HeroSlide{}
+		}
+
+		// Fetch testimonials
+		testimonials, err = h.db.Queries.ListFeaturedTestimonials(ctx)
+		if err != nil {
+			slog.Error("failed to fetch testimonials", "error", err)
+			testimonials = []sqlc.Testimonial{}
+		}
 	}
 
 	data := HomeData{

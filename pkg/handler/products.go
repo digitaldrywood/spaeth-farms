@@ -6,6 +6,7 @@ import (
 
 	"github.com/jackc/pgx/v5/pgtype"
 
+	"spaeth-farms/pkg/database/sqlc"
 	"spaeth-farms/templates/pages"
 
 	"github.com/labstack/echo/v4"
@@ -18,22 +19,25 @@ func (h *Handler) Products(c echo.Context) error {
 	categoryID := c.QueryParam("category")
 
 	var products interface{}
-	var err error
+	var categories []sqlc.Category
 
-	if categoryID != "" {
-		products, err = h.db.Queries.ListProductsByCategory(ctx, pgtype.Text{String: categoryID, Valid: true})
-	} else {
-		products, err = h.db.Queries.ListProducts(ctx)
-	}
+	if h.db != nil {
+		var err error
 
-	if err != nil {
-		slog.Error("failed to fetch products", "error", err)
-		return c.String(http.StatusInternalServerError, "Failed to load products")
-	}
+		if categoryID != "" {
+			products, err = h.db.Queries.ListProductsByCategory(ctx, pgtype.Text{String: categoryID, Valid: true})
+		} else {
+			products, err = h.db.Queries.ListProducts(ctx)
+		}
 
-	categories, err := h.db.Queries.ListCategories(ctx)
-	if err != nil {
-		slog.Error("failed to fetch categories", "error", err)
+		if err != nil {
+			slog.Error("failed to fetch products", "error", err)
+		}
+
+		categories, err = h.db.Queries.ListCategories(ctx)
+		if err != nil {
+			slog.Error("failed to fetch categories", "error", err)
+		}
 	}
 
 	return pages.Products(products, categories, categoryID).Render(ctx, c.Response().Writer)
@@ -42,6 +46,10 @@ func (h *Handler) Products(c echo.Context) error {
 func (h *Handler) ProductDetail(c echo.Context) error {
 	ctx := c.Request().Context()
 	slug := c.Param("slug")
+
+	if h.db == nil {
+		return c.String(http.StatusServiceUnavailable, "Database unavailable")
+	}
 
 	product, err := h.db.Queries.GetProductBySlug(ctx, slug)
 	if err != nil {
