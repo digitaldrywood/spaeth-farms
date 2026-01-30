@@ -32,10 +32,17 @@ func getEcho() *echo.Echo {
 		cfg := config.Load()
 
 		ctx := context.Background()
-		db, err := database.New(ctx, cfg.DatabaseURL)
-		if err != nil {
-			slog.Error("failed to connect to database", "error", err)
-			panic(err)
+		var db *database.DB
+		var err error
+
+		if cfg.DatabaseURL != "" {
+			db, err = database.New(ctx, cfg.DatabaseURL)
+			if err != nil {
+				slog.Error("failed to connect to database", "error", err)
+				// Continue without database - some pages will still work
+			}
+		} else {
+			slog.Warn("DATABASE_URL not set - database features will be unavailable")
 		}
 
 		e = echo.New()
