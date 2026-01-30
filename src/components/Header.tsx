@@ -13,6 +13,7 @@ export default function Header() {
     { name: 'Home', href: '/' },
     { name: 'Shop Beef', href: '/products' },
     { name: 'Genetics', href: '/genetics' },
+    { name: 'Cattle For Sale', href: '/for-sale' },
     { name: 'Our Story', href: '/about' },
     { name: 'Shipping', href: '/shipping' },
     { name: 'FAQ', href: '/faq' },
