@@ -12,25 +12,25 @@ const embryoPackages = [
     name: 'Perks 3084 Hometown Lady 5048',
     registration: '43609004',
     sires: ['Red Baron', 'Genesis', '2296', 'Fresh Prince', 'Montgomery', 'Blueprint'],
-    image: '/spaeth-farms/images/hereford-show-1.jpg',
+    image: '/images/hereford-show-1.jpg',
   },
   {
     name: 'H FHF Rita 8444 ET',
     registration: '43916595',
     sires: ['American Classic', 'Majestic', 'Montgomery', 'Genesis'],
-    image: '/spaeth-farms/images/hereford-show-2.jpg',
+    image: '/images/hereford-show-2.jpg',
   },
   {
     name: 'TBC Ember 200ET',
     registration: '44394748',
     sires: [],
-    image: '/spaeth-farms/images/hereford-show-3.jpg',
+    image: '/images/hereford-show-3.jpg',
   },
   {
     name: 'ANL 71D Jade 3F 13K',
     registration: '44563532',
     sires: ['Profit', 'Oshoto'],
-    image: '/spaeth-farms/images/hereford-bull-1.jpg',
+    image: '/images/hereford-bull-1.jpg',
   },
 ];
 
@@ -105,7 +105,7 @@ export default function ForSalePage() {
       <section className="relative bg-foreground text-white py-20">
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="/spaeth-farms/images/hereford-herd-2.jpg"
+            src="/images/hereford-herd-2.jpg"
             alt="Spaeth Farms Hereford cattle for sale"
             fill
             className="object-cover opacity-30"
