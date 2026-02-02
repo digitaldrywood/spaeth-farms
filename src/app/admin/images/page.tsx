@@ -54,7 +54,7 @@ export default function ImagesPage() {
   );
 
   const copyPath = (filename: string) => {
-    const path = `/spaeth-farms/images/${filename}`;
+    const path = `/images/${filename}`;
     navigator.clipboard.writeText(path);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -98,7 +98,7 @@ export default function ImagesPage() {
           >
             <div className="aspect-square bg-gray-100">
               <img
-                src={`/spaeth-farms/images/${filename}`}
+                src={`/images/${filename}`}
                 alt={filename}
                 className="w-full h-full object-cover"
               />
@@ -131,7 +131,7 @@ export default function ImagesPage() {
             <div className="p-4">
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4">
                 <img
-                  src={`/spaeth-farms/images/${selectedImage}`}
+                  src={`/images/${selectedImage}`}
                   alt={selectedImage}
                   className="w-full h-full object-contain"
                 />
@@ -143,7 +143,7 @@ export default function ImagesPage() {
                   <div className="flex gap-2">
                     <input
                       type="text"
-                      value={`/spaeth-farms/images/${selectedImage}`}
+                      value={`/images/${selectedImage}`}
                       readOnly
                       className="flex-1 px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm text-gray-600"
                     />

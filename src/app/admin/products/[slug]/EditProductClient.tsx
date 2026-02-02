@@ -22,7 +22,7 @@ export default function EditProductClient({ paramsPromise }: { paramsPromise: Pr
     price: 0,
     weight: '',
     category: 'steaks',
-    image: '/spaeth-farms/images/',
+    image: '/images/',
     inStock: true,
     featured: false,
     details: [''],
@@ -299,7 +299,7 @@ export default function EditProductClient({ paramsPromise }: { paramsPromise: Pr
 
             <div className="space-y-4">
               <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
-                {product.image && product.image !== '/spaeth-farms/images/' ? (
+                {product.image && product.image !== '/images/' ? (
                   <img
                     src={product.image}
                     alt={product.name}
@@ -321,7 +321,7 @@ export default function EditProductClient({ paramsPromise }: { paramsPromise: Pr
                   value={product.image}
                   onChange={(e) => updateField('image', e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
-                  placeholder="/spaeth-farms/images/product.jpg"
+                  placeholder="/images/product.jpg"
                 />
               </div>
 

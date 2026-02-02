@@ -120,7 +120,7 @@ export default function CategoriesPage() {
                     <div className="flex items-center gap-2">
                       <div className="w-12 h-12 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
                         <img
-                          src={category.image || `/spaeth-farms/images/category-${category.id}.jpg`}
+                          src={category.image || `/images/category-${category.id}.jpg`}
                           alt={category.name}
                           className="w-full h-full object-cover"
                         />
@@ -131,7 +131,7 @@ export default function CategoriesPage() {
                           value={category.image || ''}
                           onChange={(e) => updateCategory(category.id, 'image', e.target.value)}
                           className="flex-1 px-3 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
-                          placeholder="/spaeth-farms/images/..."
+                          placeholder="/images/..."
                         />
                       )}
                     </div>

@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-6">
               <Image
-                src="/spaeth-farms/images/logo.png"
+                src="/images/logo.png"
                 alt="Spaeth Farms"
                 width={180}
                 height={90}

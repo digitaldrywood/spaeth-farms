@@ -32,7 +32,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/spaeth-farms/images/logo.png"
+              src="/images/logo.png"
               alt="Spaeth Farms"
               width={280}
               height={140}
