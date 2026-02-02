@@ -231,35 +231,30 @@ export default function ForSalePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bredCows.map((cow) => (
-              <div key={cow.name} className="bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-                <div className="relative h-48 bg-background flex items-center justify-center">
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-accent text-white px-2 py-0.5 rounded text-xs font-medium">
-                      Bred Cow
-                    </span>
+              <div key={cow.name} className="bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow p-6">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="font-bold text-foreground">{cow.name}</h3>
+                    <p className="text-xs text-muted">Reg #{cow.registration}</p>
                   </div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 text-border">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                  </svg>
+                  <span className="bg-accent text-white px-2 py-0.5 rounded text-xs font-medium">
+                    Bred Cow
+                  </span>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-foreground mb-1">{cow.name}</h3>
-                  <p className="text-xs text-muted mb-3">Reg #{cow.registration}</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-muted">AI Sire:</span>
-                      <span className="text-foreground font-medium text-right text-xs">{cow.aiSire}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted">Due:</span>
-                      <span className="text-foreground">{cow.calvingDate}</span>
-                    </div>
-                    {cow.recentCalf && (
-                      <div className="pt-2 border-t border-border">
-                        <span className="text-xs text-muted">Recent: {cow.recentCalf}</span>
-                      </div>
-                    )}
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted">AI Sire:</span>
+                    <span className="text-foreground font-medium text-right text-xs">{cow.aiSire}</span>
                   </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted">Due:</span>
+                    <span className="text-foreground">{cow.calvingDate}</span>
+                  </div>
+                  {cow.recentCalf && (
+                    <div className="pt-2 border-t border-border">
+                      <span className="text-xs text-muted">Recent: {cow.recentCalf}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -280,29 +275,24 @@ export default function ForSalePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bredHeifers.map((heifer) => (
-              <div key={heifer.name} className="bg-background rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-                <div className="relative h-48 bg-white flex items-center justify-center">
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-secondary text-white px-2 py-0.5 rounded text-xs font-medium">
-                      Bred Heifer
-                    </span>
+              <div key={heifer.name} className="bg-background rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow p-6">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 className="font-bold text-foreground">{heifer.name}</h3>
+                    <p className="text-xs text-muted">Reg #{heifer.registration}</p>
                   </div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 text-border">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                  </svg>
+                  <span className="bg-secondary text-white px-2 py-0.5 rounded text-xs font-medium">
+                    Bred Heifer
+                  </span>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-foreground mb-1">{heifer.name}</h3>
-                  <p className="text-xs text-muted mb-3">Reg #{heifer.registration}</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-muted">Sire:</span>
-                      <span className="text-foreground font-medium text-right text-xs">{heifer.sire}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted">Due:</span>
-                      <span className="text-foreground">{heifer.calvingDate}</span>
-                    </div>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted">Sire:</span>
+                    <span className="text-foreground font-medium text-right text-xs">{heifer.sire}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted">Due:</span>
+                    <span className="text-foreground">{heifer.calvingDate}</span>
                   </div>
                 </div>
               </div>
