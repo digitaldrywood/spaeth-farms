@@ -11,7 +11,7 @@
       "text": "Our Story",
       "link": "/about"
     },
-    "backgroundImage": "/spaeth-farms/images/hero-cattle.jpg"
+    "backgroundImage": "/images/hero-cattle.jpg"
   },
   "trustBadges": [
     {
@@ -49,7 +49,7 @@
   },
   "whyChooseUs": {
     "title": "Why Choose Spaeth Farms?",
-    "image": "/spaeth-farms/images/farm-scene.jpg",
+    "image": "/images/farm-scene.jpg",
     "benefits": [
       {
         "id": "1",
