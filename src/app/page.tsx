@@ -121,7 +121,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
                 <Image
-                  src={`/spaeth-farms/images/category-${category.id}.jpg`}
+                  src={`/images/category-${category.id}.jpg`}
                   alt={category.name}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -144,7 +144,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
                 <Image
-                  src={`/spaeth-farms/images/category-${category.id}.jpg`}
+                  src={`/images/category-${category.id}.jpg`}
                   alt={category.name}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -218,7 +218,7 @@ export default function Home() {
             </div>
             <div className="relative h-96 lg:h-[500px] rounded-lg overflow-hidden">
               <Image
-                src="/spaeth-farms/images/farm-scene.jpg"
+                src="/images/farm-scene.jpg"
                 alt="Spaeth Farms cattle grazing"
                 fill
                 className="object-cover"

@@ -5,19 +5,19 @@ import Image from 'next/image';
 
 const heroImages = [
   {
-    src: '/spaeth-farms/images/hero-cattle.jpg',
+    src: '/images/hero-cattle.jpg',
     alt: 'Cattle grazing on rolling Wisconsin hills',
   },
   {
-    src: '/spaeth-farms/images/hereford-herd.jpg',
+    src: '/images/hereford-herd.jpg',
     alt: 'Hereford cattle herd grazing',
   },
   {
-    src: '/spaeth-farms/images/hereford-herd-2.jpg',
+    src: '/images/hereford-herd-2.jpg',
     alt: 'Hereford cattle on the farm',
   },
   {
-    src: '/spaeth-farms/images/spaeth-family-cattle.jpg',
+    src: '/images/spaeth-family-cattle.jpg',
     alt: 'Spaeth family with their cattle',
   },
 ];
