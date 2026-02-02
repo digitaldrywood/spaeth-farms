@@ -12,25 +12,25 @@ const embryoPackages = [
     name: 'Perks 3084 Hometown Lady 5048',
     registration: '43609004',
     sires: ['Red Baron', 'Genesis', '2296', 'Fresh Prince', 'Montgomery', 'Blueprint'],
-    image: '/images/hereford-show-1.jpg',
+    image: '/images/for-sale-perks-hometown-lady.jpg',
   },
   {
     name: 'H FHF Rita 8444 ET',
     registration: '43916595',
     sires: ['American Classic', 'Majestic', 'Montgomery', 'Genesis'],
-    image: '/images/hereford-show-2.jpg',
+    image: '/images/for-sale-rita-8444.jpg',
   },
   {
     name: 'TBC Ember 200ET',
     registration: '44394748',
     sires: [],
-    image: '/images/hereford-show-3.jpg',
+    image: '/images/for-sale-ember-200et.jpg',
   },
   {
     name: 'ANL 71D Jade 3F 13K',
     registration: '44563532',
     sires: ['Profit', 'Oshoto'],
-    image: '/images/hereford-bull-1.jpg',
+    image: '/images/for-sale-jade-13k.jpg',
   },
 ];
 
@@ -83,18 +83,32 @@ const bulls = [
   {
     name: 'SF 8444 561C PIP 2438ET',
     birthDate: 'January 15, 2024',
+    image: '/images/for-sale-bull-pip-2438et.jpg',
   },
   {
     name: 'SF 7J Houston Apollo 24440',
     birthDate: 'February 8, 2024',
+    image: '/images/for-sale-bull-apollo-24440.jpg',
   },
   {
     name: 'SF 2237 33Z KING 2413',
     birthDate: 'January 28, 2024',
+    image: '/images/for-sale-bull-king-2413.jpg',
   },
   {
-    name: 'SF Genesis Prime 2445',
-    birthDate: 'March 2, 2024',
+    name: 'SF 48K HANDY MAN REX 2439',
+    birthDate: '2024',
+    image: '/images/for-sale-bull-rex-2439.jpg',
+  },
+  {
+    name: 'SF 5048 018 Nitro 2459ET',
+    birthDate: '2024',
+    image: '/images/for-sale-bull-nitro-2459et.jpg',
+  },
+  {
+    name: 'SF 29 203D KOOL WHIP',
+    birthDate: '2024',
+    image: '/images/for-sale-bull-kool-whip.jpg',
   },
 ];
 
@@ -307,18 +321,21 @@ export default function ForSalePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bulls.map((bull) => (
               <div key={bull.name} className="bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-                <div className="relative h-40 bg-background flex items-center justify-center">
+                <div className="relative h-48">
+                  <Image
+                    src={bull.image}
+                    alt={bull.name}
+                    fill
+                    className="object-cover"
+                  />
                   <div className="absolute top-3 left-3">
                     <span className="bg-foreground text-white px-2 py-0.5 rounded text-xs font-medium">
                       Bull
                     </span>
                   </div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-12 h-12 text-border">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                  </svg>
                 </div>
                 <div className="p-4">
                   <h3 className="font-bold text-foreground text-sm mb-1">{bull.name}</h3>
