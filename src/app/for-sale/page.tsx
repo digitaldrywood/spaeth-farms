@@ -41,6 +41,7 @@ const bredCows = [
     aiSire: 'Churchill W4 Sherman 2157K ET',
     calvingDate: 'February 2026',
     recentCalf: 'Heifer calf by Genesis (Feb 2025)',
+    image: '/images/for-sale-perks-hometown-lady.jpg',
   },
   {
     name: 'SF 8444 Lady Rita 2356',
@@ -48,6 +49,7 @@ const bredCows = [
     aiSire: 'Lowen Genesis G16 ET',
     calvingDate: 'February 2026',
     recentCalf: 'Bull calf by Blueprint (Mar 2025)',
+    image: '/images/for-sale-rita-8444.jpg',
   },
   {
     name: 'SF Hometown Jewel 2289',
@@ -55,6 +57,7 @@ const bredCows = [
     aiSire: 'NJW 73S W18 Hometown 10Y ET',
     calvingDate: 'March 2026',
     recentCalf: 'Heifer calf by Montgomery (Feb 2025)',
+    image: '/images/for-sale-perks-hometown-lady.jpg',
   },
 ];
 
@@ -64,18 +67,21 @@ const bredHeifers = [
     registration: '44789012',
     calvingDate: 'January 2026',
     sire: 'Churchill Jack Frost 458M ET',
+    image: '/images/for-sale-perks-hometown-lady.jpg',
   },
   {
     name: 'SF 2356 Rita Belle 2509',
     registration: '44789234',
     calvingDate: 'February 2026',
     sire: 'Lowen Genesis G16 ET',
+    image: '/images/for-sale-rita-8444.jpg',
   },
   {
     name: 'SF 2289 Jewel Diamond 2515',
     registration: '44789456',
     calvingDate: 'March 2026',
     sire: 'NJW 73S W18 Hometown 10Y ET',
+    image: '/images/for-sale-perks-hometown-lady.jpg',
   },
 ];
 
@@ -231,30 +237,38 @@ export default function ForSalePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bredCows.map((cow) => (
-              <div key={cow.name} className="bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="font-bold text-foreground">{cow.name}</h3>
-                    <p className="text-xs text-muted">Reg #{cow.registration}</p>
+              <div key={cow.name} className="bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                <div className="relative h-48">
+                  <Image
+                    src={cow.image}
+                    alt={cow.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute top-3 left-3">
+                    <span className="bg-accent text-white px-2 py-0.5 rounded text-xs font-medium">
+                      Bred Cow
+                    </span>
                   </div>
-                  <span className="bg-accent text-white px-2 py-0.5 rounded text-xs font-medium">
-                    Bred Cow
-                  </span>
                 </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-muted">AI Sire:</span>
-                    <span className="text-foreground font-medium text-right text-xs">{cow.aiSire}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted">Due:</span>
-                    <span className="text-foreground">{cow.calvingDate}</span>
-                  </div>
-                  {cow.recentCalf && (
-                    <div className="pt-2 border-t border-border">
-                      <span className="text-xs text-muted">Recent: {cow.recentCalf}</span>
+                <div className="p-4">
+                  <h3 className="font-bold text-foreground mb-1">{cow.name}</h3>
+                  <p className="text-xs text-muted mb-3">Reg #{cow.registration}</p>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-muted">AI Sire:</span>
+                      <span className="text-foreground font-medium text-right text-xs">{cow.aiSire}</span>
                     </div>
-                  )}
+                    <div className="flex justify-between">
+                      <span className="text-muted">Due:</span>
+                      <span className="text-foreground">{cow.calvingDate}</span>
+                    </div>
+                    {cow.recentCalf && (
+                      <div className="pt-2 border-t border-border">
+                        <span className="text-xs text-muted">Recent: {cow.recentCalf}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -275,24 +289,32 @@ export default function ForSalePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bredHeifers.map((heifer) => (
-              <div key={heifer.name} className="bg-background rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="font-bold text-foreground">{heifer.name}</h3>
-                    <p className="text-xs text-muted">Reg #{heifer.registration}</p>
+              <div key={heifer.name} className="bg-background rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                <div className="relative h-48">
+                  <Image
+                    src={heifer.image}
+                    alt={heifer.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute top-3 left-3">
+                    <span className="bg-secondary text-white px-2 py-0.5 rounded text-xs font-medium">
+                      Bred Heifer
+                    </span>
                   </div>
-                  <span className="bg-secondary text-white px-2 py-0.5 rounded text-xs font-medium">
-                    Bred Heifer
-                  </span>
                 </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-muted">Sire:</span>
-                    <span className="text-foreground font-medium text-right text-xs">{heifer.sire}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted">Due:</span>
-                    <span className="text-foreground">{heifer.calvingDate}</span>
+                <div className="p-4">
+                  <h3 className="font-bold text-foreground mb-1">{heifer.name}</h3>
+                  <p className="text-xs text-muted mb-3">Reg #{heifer.registration}</p>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-muted">Sire:</span>
+                      <span className="text-foreground font-medium text-right text-xs">{heifer.sire}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted">Due:</span>
+                      <span className="text-foreground">{heifer.calvingDate}</span>
+                    </div>
                   </div>
                 </div>
               </div>
