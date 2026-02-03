@@ -185,7 +185,7 @@ export default function ForSalePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {embryoPackages.map((pkg) => (
-              <div key={pkg.name} className="bg-background rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow">
+              <div key={pkg.name} className="bg-background rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col">
                 <div className="relative h-64">
                   <Image
                     src={pkg.image}
@@ -199,22 +199,22 @@ export default function ForSalePage() {
                     </span>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-1">{pkg.name}</h3>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold mb-1 leading-tight">{pkg.name}</h3>
                   <p className="text-sm text-muted mb-4">Reg #{pkg.registration}</p>
                   {pkg.sires.length > 0 && (
-                    <div className="mb-4">
-                      <p className="text-sm font-semibold text-foreground mb-2">Available Sire Options:</p>
+                    <div className="mb-4 flex-1">
+                      <p className="text-xs text-muted uppercase tracking-wide mb-2">Available Sire Options</p>
                       <div className="flex flex-wrap gap-2">
                         {pkg.sires.map((sire) => (
-                          <span key={sire} className="bg-background text-muted px-2 py-1 rounded text-xs border border-border">
+                          <span key={sire} className="bg-white text-foreground px-3 py-1.5 rounded-full text-sm border border-border font-medium">
                             {sire}
                           </span>
                         ))}
                       </div>
                     </div>
                   )}
-                  <p className="text-sm text-muted">
+                  <p className="text-sm text-muted mt-auto pt-4 border-t border-border">
                     Contact us for package pricing and sire availability.
                   </p>
                 </div>
@@ -237,7 +237,7 @@ export default function ForSalePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bredCows.map((cow) => (
-              <div key={cow.name} className="bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+              <div key={cow.name} className="bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
                 <div className="relative h-48">
                   <Image
                     src={cow.image}
@@ -251,24 +251,25 @@ export default function ForSalePage() {
                     </span>
                   </div>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-foreground mb-1">{cow.name}</h3>
-                  <p className="text-xs text-muted mb-3">Reg #{cow.registration}</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-muted">AI Sire:</span>
-                      <span className="text-foreground font-medium text-right text-xs">{cow.aiSire}</span>
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="font-bold text-foreground mb-1 leading-tight">{cow.name}</h3>
+                  <p className="text-xs text-muted mb-4">Reg #{cow.registration}</p>
+                  <div className="space-y-3 flex-1">
+                    <div>
+                      <p className="text-xs text-muted uppercase tracking-wide mb-1">AI Sire</p>
+                      <p className="text-sm text-foreground font-medium leading-snug">{cow.aiSire}</p>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted">Due:</span>
-                      <span className="text-foreground">{cow.calvingDate}</span>
+                    <div>
+                      <p className="text-xs text-muted uppercase tracking-wide mb-1">Expected Calving</p>
+                      <p className="text-sm text-foreground font-medium">{cow.calvingDate}</p>
                     </div>
-                    {cow.recentCalf && (
-                      <div className="pt-2 border-t border-border">
-                        <span className="text-xs text-muted">Recent: {cow.recentCalf}</span>
-                      </div>
-                    )}
                   </div>
+                  {cow.recentCalf && (
+                    <div className="pt-3 mt-3 border-t border-border">
+                      <p className="text-xs text-muted uppercase tracking-wide mb-1">Recent Calf</p>
+                      <p className="text-sm text-foreground">{cow.recentCalf}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -289,7 +290,7 @@ export default function ForSalePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bredHeifers.map((heifer) => (
-              <div key={heifer.name} className="bg-background rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+              <div key={heifer.name} className="bg-background rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
                 <div className="relative h-48">
                   <Image
                     src={heifer.image}
@@ -303,17 +304,17 @@ export default function ForSalePage() {
                     </span>
                   </div>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-foreground mb-1">{heifer.name}</h3>
-                  <p className="text-xs text-muted mb-3">Reg #{heifer.registration}</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-muted">Sire:</span>
-                      <span className="text-foreground font-medium text-right text-xs">{heifer.sire}</span>
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="font-bold text-foreground mb-1 leading-tight">{heifer.name}</h3>
+                  <p className="text-xs text-muted mb-4">Reg #{heifer.registration}</p>
+                  <div className="space-y-3 flex-1">
+                    <div>
+                      <p className="text-xs text-muted uppercase tracking-wide mb-1">Sire</p>
+                      <p className="text-sm text-foreground font-medium leading-snug">{heifer.sire}</p>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted">Due:</span>
-                      <span className="text-foreground">{heifer.calvingDate}</span>
+                    <div>
+                      <p className="text-xs text-muted uppercase tracking-wide mb-1">Expected Calving</p>
+                      <p className="text-sm text-foreground font-medium">{heifer.calvingDate}</p>
                     </div>
                   </div>
                 </div>
@@ -335,7 +336,7 @@ export default function ForSalePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bulls.map((bull) => (
-              <div key={bull.name} className="bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+              <div key={bull.name} className="bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
                 <div className="relative h-48">
                   <Image
                     src={bull.image}
@@ -349,9 +350,12 @@ export default function ForSalePage() {
                     </span>
                   </div>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-foreground text-sm mb-1">{bull.name}</h3>
-                  <p className="text-xs text-muted">Born: {bull.birthDate}</p>
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="font-bold text-foreground mb-3 leading-tight">{bull.name}</h3>
+                  <div className="mt-auto">
+                    <p className="text-xs text-muted uppercase tracking-wide mb-1">Birth Date</p>
+                    <p className="text-sm text-foreground font-medium">{bull.birthDate}</p>
+                  </div>
                 </div>
               </div>
             ))}
